@@ -5,10 +5,13 @@ library(nabor)
 # install.packages('spData')
 library(sf)
 
-nc <- st_read(system.file("shapes/sids.shp", package="spData")[1], quiet=TRUE)
+nc <- st_read(system.file("shapes/sids.shp", package="spData"))
 somenc <- nc[sample(length(nc), 10),]
-pts <- st_sample(nc, 100)
+somencpts <- st_sample(nc, 100)
 
+seine
+seinepts <- st_sample(st_buffer(seine, 1e3), 100)
+seineotherpts <- st_sample(st_buffer(seine[2,], 1e3), 100)
 
 # Source ------------------------------------------------------------------
 source('R/distance-to.R')
@@ -16,10 +19,12 @@ source('R/distance-to.R')
 
 
 # Run ---------------------------------------------------------------------
-z <- knn(st_coordinates(pts),
-				 st_coordinates(somenc),
-				 1)
-distance_to(pts,)
+# Pts and polygons
+distance_to(somencpts, somenc)
+
+# Pts and lines
+distance_to(seinepts, seineotherpts)
+
 
 # Notes -------------------------------------------------------------------
 # check if st_crs is same
