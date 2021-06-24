@@ -17,5 +17,11 @@ z <- knn(st_coordinates(pts),
 				 st_coordinates(somenc),
 				 1)
 
+# NOTE:
+# The underlying libnabo does not have a signalling value to identify
+# indices for invalid query points (e.g. those containing an NA).
+# In this situation, the index returned by libnabo will be 0 and
+# knn will therefore return an index of 1. However the distance
+# will be Inf signalling a failure to find a nearest neighbour.
 
 # this is good for linear or pts
