@@ -16,7 +16,7 @@ distance_to <- function(x, y) {
 							 query = sf::st_coordinates(y),
 							 k = 1L)
 
-	if (sf::st_geometry_type(y, FALSE) == 'POINT' | sf::st_geometry_type(y, FALSE) == 'LINE') {
+	if (sf::st_geometry_type(y, FALSE) %in% c('POINT', 'MULTIPOINT', 'LINESTRING', 'MULTILINESTRING')) {
 		dists
 	} else {
 		# check st_within
