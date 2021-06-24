@@ -31,7 +31,7 @@ distance_to <- function(x, y) {
 							 query = sf::st_coordinates(y),
 							 k = 1L)
 
-	if (sf::st_is(y, 'POINT') | sf::st_is(y, 'LINE')) {
+	if (sf::st_geometry_type(y, FALSE) == 'POINT' | sf::st_geometry_type(y, FALSE) == 'LINE') {
 		dists
 	} else {
 		# check st_within
