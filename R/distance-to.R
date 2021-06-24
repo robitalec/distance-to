@@ -11,6 +11,11 @@ pts <- st_sample(nc, 100)
 
 plot(pts)
 
-knn(st_coordinates(pts),
-		st_coordinates(somenc),
-		1)
+# check if st_crs is same
+
+z <- knn(st_coordinates(pts),
+				 st_coordinates(somenc),
+				 1)
+
+
+# this is good for linear or pts
