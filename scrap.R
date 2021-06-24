@@ -30,7 +30,6 @@ distance_to(seinepts, seineotherpts)
 # check if st_crs is same
 
 
-
 # NOTE:
 # The underlying libnabo does not have a signalling value to identify
 # indices for invalid query points (e.g. those containing an NA).
@@ -38,4 +37,5 @@ distance_to(seinepts, seineotherpts)
 # knn will therefore return an index of 1. However the distance
 # will be Inf signalling a failure to find a nearest neighbour.
 
-# this is good for linear or pts
+# compare speed to st_nearest version
+# compare speed to raster
