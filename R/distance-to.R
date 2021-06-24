@@ -11,4 +11,6 @@ pts <- st_sample(nc, 100)
 
 plot(pts)
 
-
+knn(st_coordinates(pts),
+		st_coordinates(somenc),
+		1)
