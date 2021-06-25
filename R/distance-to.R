@@ -9,7 +9,7 @@
 #' @export
 #'
 #' @examples
-distance_to <- function(x, y) {
+distance_to <- function(x, y, measure) {
 	# check if x is always pts
 
 	# TODO: necessary?
@@ -33,7 +33,8 @@ distance_to <- function(x, y) {
 		dists[['nn.dists']] <- geodist::geodist(
 			xcoor,
 			ycoor[dists[['nn.idx']],],
-			paired = TRUE
+			paired = TRUE,
+			measure = measure
 		)
 	}
 
