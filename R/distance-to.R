@@ -42,11 +42,9 @@ distance_to <- function(x, y, measure = NULL) {
 	}
 
 	if (sf::st_geometry_type(y, FALSE) %in%
-			c('POINT', 'MULTIPOINT', 'LINESTRING', 'MULTILINESTRING')) {
-		dists[['nn.dists']]
-	} else if (sf::st_geometry_type(y, FALSE) %in%
 						 c('POLYGON', 'MULTIPOLYGON')){
 		dists[['nn.dists']][lengths(st_intersects(x, y)) > 0] <- 0
-		dists[['nn.dists']]
 	}
+
+	as.vector(dists[['nn.dists']])
 }
