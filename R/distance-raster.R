@@ -35,6 +35,7 @@ distance_raster <- function(y, cellsize, extent = NULL, expand = NULL) {
 		cellsize = cellsize,
 		what = 'polygons'
 	))
+
 	pts <- sf::st_make_grid(
 		x,
 		cellsize = cellsize,
@@ -44,10 +45,11 @@ distance_raster <- function(y, cellsize, extent = NULL, expand = NULL) {
 	dist <- distance_to(pts, y)
 
 
-	g <- sf::st_as_sf(
-		grid,
-		dist = distance_to(grid, y)
+	pols$dist <- dist
+
+	fasterize::fasterize(
+		pols,
+		fasterize::raster(pols, res = cellsize),
+		field = 'dist'
 	)
-	#
-	# fasterize::fasterize(g, fasterize::raster(g, res = cellsize), field = 'dist')
 }
