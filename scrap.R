@@ -26,8 +26,10 @@ source('R/distance-to.R')
 distance_to(somencpts, somenc)
 
 # Pts and lines
-distance_to(seinepts, seineotherpts)
+distance_to(seinepts, seine)
 
+# Pts and pts
+distance_to(seinepts, seineotherpts)
 
 # Notes -------------------------------------------------------------------
 # check if st_crs is same
