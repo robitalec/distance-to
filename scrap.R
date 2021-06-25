@@ -5,13 +5,16 @@ library(nabor)
 # install.packages('spData')
 library(sf)
 
+npts <- 100
+
 nc <- st_read(system.file("shapes/sids.shp", package="spData"))
-somenc <- nc[sample(length(nc), 10),]
-somencpts <- st_sample(nc, 100)
+somenc <- nc[sample(length(nc), 5),]
+somencpts <- st_sample(nc, npts)
 
 seine
-seinepts <- st_sample(st_buffer(seine, 1e3), 100)
-seineotherpts <- st_sample(st_buffer(seine[2,], 1e3), 100)
+bufseine <- st_buffer(seine, 1e3)
+seinepts <- st_sample(bufseine, npts)
+seineotherpts <- st_sample(bufseine[2, ], npts)
 
 # Source ------------------------------------------------------------------
 source('R/distance-to.R')
