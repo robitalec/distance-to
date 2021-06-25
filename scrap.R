@@ -52,7 +52,36 @@ st_nn(seinepts, seineotherpts, returnDist = TRUE)
 
 
 # Grid --------------------------------------------------------------------
-mapview(st_make_grid(nc, what = 'centers'))
+g1 <- distance_raster(seine, 1e5)
+
+x <- seine
+y <- seine
+cellsize <- 1e4
+
+pols <- sf::st_as_sf(sf::st_make_grid(
+	x,
+	cellsize = cellsize,
+	what = 'polygons'
+))
+pts <- st_as_sf(sf::st_make_grid(
+	x,
+	cellsize = cellsize,
+	what = 'centers'
+))
+
+pols$dist <- as.vector(distance_to(pts, y))
+
+mapview(fasterize::fasterize(pols, fasterize::raster(pols, res = cellsize), field = 'dist'))
+
+g <- data.frame(dist = )
+g$geom <- grid
+st_as_sf(g)
+
+mapview(grid)
+g <- sf::st_as_sf(
+	grid#,
+	# dist = distance_to(grid, y)
+)
 
 
 
