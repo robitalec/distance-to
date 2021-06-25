@@ -9,7 +9,7 @@
 #' @export
 #'
 #' @examples
-distance_to <- function(x, y, measure) {
+distance_to <- function(x, y, measure = NULL) {
 	# check if x is always pts
 
 	# TODO: necessary?
@@ -30,6 +30,9 @@ distance_to <- function(x, y, measure) {
 	dists <- nabor::knn(data = ycoor, query = xcoor, k = 1L)
 
 	if (sf::st_is_longlat(x) & sf::st_is_longlat(y)) {
+		if (is.null(measure)) {
+			stop('measure is required if x and y are longlat - see geodist::geodist')
+		}
 		dists[['nn.dists']] <- geodist::geodist(
 			xcoor,
 			ycoor[dists[['nn.idx']],],
