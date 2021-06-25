@@ -5,7 +5,7 @@ library(nabor)
 # install.packages('spData')
 library(sf)
 
-npts <- 1e4
+npts <- 1e5
 
 sample_bbox <- function(shape, n) {
 	bbox <- sf::st_bbox(shape)
@@ -86,6 +86,27 @@ g <- sf::st_as_sf(
 	grid#,
 	# dist = distance_to(grid, y)
 )
+
+
+
+# Compare -----------------------------------------------------------------
+# Pts and polygons
+system.time(dnc <- distance_to(ncpts, somenc, measure = 'geodesic'))
+system.time(nnc <- nngeo::st_nn(ncpts, somenc, returnDist = TRUE))
+
+all.equal(dnc, unlist(nnc$dist))
+
+# Pts and lines
+system.time(dse <- distance_to(seinepts, seine))
+system.time(nse <- nngeo::st_nn(seinepts, seine, returnDist = TRUE))
+
+all.equal(dse, unlist(nse$dist))
+
+# Pts and pts
+system.time(dseo <- distance_to(seinepts, seineotherpts))
+system.time(nseo <- nngeo::st_nn(seinepts, seineotherpts, returnDist = TRUE))
+
+all.equal(dseo, unlist(nseo$dist))
 
 
 
