@@ -20,7 +20,7 @@ distance_to <- function(x, y) {
 			c('POINT', 'MULTIPOINT', 'LINESTRING', 'MULTILINESTRING')) {
 		dists
 	} else {
-		# dists[sf::st_within(x, y, sparse = FALSE)] <- 0
+		dists[lengths(st_intersects(x, y)) > 0] <- 0
 		dists
 	}
 }
