@@ -8,20 +8,19 @@ library(sf)
 npts <- 1e4
 
 sample_bbox <- function(shape, n) {
-	bbox <- st_bbox(shape)
-	st_as_sf(data.frame(
+	bbox <- sf::st_bbox(shape)
+	sf::st_as_sf(data.frame(
 		x = runif(n, bbox[1], bbox[3]),
 		y = runif(n, bbox[2], bbox[4])
 	), coords = c('x', 'y'),
-	crs = st_crs(shape))
+	crs = sf::st_crs(shape))
 }
 
 
 nc <- st_read(system.file("shapes/sids.shp", package="spData"))
 st_crs(nc) <- "+proj=longlat +datum=NAD27"
 somenc <- nc[sample(length(nc), 5),]
-somencpts <- sample_bbox(somenc, npts)
-
+ncpts <- sample_bbox(nc, npts)
 
 data('seine', package = 'spData')
 bufseine <- st_buffer(seine, 1e3)
@@ -35,8 +34,12 @@ source('R/distance-to.R')
 
 # Run ---------------------------------------------------------------------
 # Pts and polygons
-system.time(distance_to(somencpts, somenc))
-system.time(st_nn(somencpts, somenc, returnDist = TRUE))
+system.time(distance_to(ncpts, somenc, measure = 'geodesic'))
+system.time(nngeo::st_nn(ncpts, somenc, returnDist = TRUE))
+
+dd <- distance_to(ncpts, somenc, measure = 'geodesic')
+nn <- nngeo::st_nn(ncpts, somenc, returnDist = TRUE)
+all.equal(as.vector(dd), unlist(nn$dist))
 
 # Pts and lines
 distance_to(seinepts, seine)
