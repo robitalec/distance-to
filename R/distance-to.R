@@ -12,16 +12,15 @@ distance_to <- function(x, y) {
 	# 	stop('st_geometry_type(y) shows mixed geometry types')
 	# }
 
-	dists <- knn(data = sf::st_coordinates(x),
-							 query = sf::st_coordinates(y),
-							 k = 1L)
+	dists <- knn(data = sf::st_coordinates(y),
+							 query = sf::st_coordinates(x),
+							 k = 1L)$nn.dists
 
-	if (sf::st_geometry_type(y, FALSE) %in% c('POINT', 'MULTIPOINT', 'LINESTRING', 'MULTILINESTRING')) {
+	if (sf::st_geometry_type(y, FALSE) %in%
+			c('POINT', 'MULTIPOINT', 'LINESTRING', 'MULTILINESTRING')) {
 		dists
 	} else {
-		# check st_within
-		# if within, set to 0
-		# if outside, preserve dist in knn
-		# dists
+		# dists[sf::st_within(x, y, sparse = FALSE)] <- 0
+		dists
 	}
 }
