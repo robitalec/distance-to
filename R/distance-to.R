@@ -1,7 +1,7 @@
 #' Distance to
 #'
-#' @param x
-#' @param y
+#' @param x pts
+#' @param y layer
 #'
 #' @return
 #' @export
