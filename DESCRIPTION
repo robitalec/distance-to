@@ -8,16 +8,16 @@ Authors@R:
            email = "robit.alec@gmail.com",
            comment = c(ORCID = "0000-0002-4706-1762"))
 Description: What the package does (one paragraph).
-License: GPL-3
+License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Suggests: 
     fasterize,
-    geodist,
     spData,
     tinytest
 Imports: 
     sf,
-    nabor
+    nabor,
+    geodist
