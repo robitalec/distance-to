@@ -14,6 +14,10 @@
 distance_raster <- function(y, cellsize, extent = NULL, expand = NULL) {
 	# check cellsize ~~ crs units
 
+	if (!is.null(extent) & class(extent) != 'bbox') {
+		stop('extent must be of class bbox from sf::st_bbox')
+	}
+
 	if (!is.null(extent) & is.null(expand)) {
 		# check if extent is bbox
 		x <- extent
