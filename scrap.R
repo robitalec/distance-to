@@ -44,3 +44,5 @@ distance_to(seinepts, seineotherpts)
 
 # compare speed to st_nearest version
 # compare speed to raster
+
+# check input output lengths
