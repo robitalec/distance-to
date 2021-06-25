@@ -7,9 +7,20 @@ library(sf)
 
 npts <- 1e5
 
+sample_bbox <- function(shape, n) {
+	bbox <- st_bbox(shape)
+	st_as_sf(data.frame(
+		x = runif(n, bbox[1], bbox[3]),
+		y = runif(n, bbox[2], bbox[4])
+	), coords = c('x', 'y'))
+}
+
+
 nc <- st_read(system.file("shapes/sids.shp", package="spData"))
 somenc <- nc[sample(length(nc), 5),]
-somencpts <- st_sample(nc, npts)
+
+somencpts <- st_as_sf(data.table(
+	npts)
 
 seine
 bufseine <- st_buffer(seine, 1e3)
