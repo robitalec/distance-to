@@ -35,13 +35,16 @@ source('R/distance-to.R')
 
 # Run ---------------------------------------------------------------------
 # Pts and polygons
-distance_to(somencpts, somenc)
+system.time(distance_to(somencpts, somenc))
+system.time(st_nn(somencpts, somenc, returnDist = TRUE))
 
 # Pts and lines
 distance_to(seinepts, seine)
 
 # Pts and pts
 distance_to(seinepts, seineotherpts)
+
+st_nn(seinepts, seineotherpts, returnDist = TRUE)
 
 # Notes -------------------------------------------------------------------
 # check if st_crs is same
