@@ -17,7 +17,7 @@ distance_to <- function(x, y) {
 	# 	stop('sf::st_geometry_type(y) shows mixed geometry types')
 	# }
 
-	if (sf::st_crs(x) == sf::st_crs(y)) {
+	if (sf::st_crs(x) != sf::st_crs(y)) {
 		stop('sf::st_crs(x) must be the same as sf::st_crs(y)')
 	}
 
