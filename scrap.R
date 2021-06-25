@@ -49,6 +49,13 @@ distance_to(seinepts, seineotherpts)
 
 st_nn(seinepts, seineotherpts, returnDist = TRUE)
 
+
+
+# Grid --------------------------------------------------------------------
+mapview(st_make_grid(nc, what = 'centers'))
+
+
+
 # Notes -------------------------------------------------------------------
 # check if st_crs is same
 
