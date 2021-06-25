@@ -12,9 +12,10 @@
 distance_to <- function(x, y) {
 	# check if x is always pts
 
-	if (length(unique(sf::st_geometry_type(y))) != 1) {
-		stop('sf::st_geometry_type(y) shows mixed geometry types')
-	}
+	# TODO: necessary?
+	# if (length(unique(sf::st_geometry_type(y))) != 1) {
+	# 	stop('sf::st_geometry_type(y) shows mixed geometry types')
+	# }
 
 	if (sf::st_crs(x) == sf::st_crs(y)) {
 		stop('sf::st_crs(x) must be the same as sf::st_crs(y)')
