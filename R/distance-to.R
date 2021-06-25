@@ -1,5 +1,7 @@
 #' Distance to
 #'
+#' nabor = Euclidean distance
+#'
 #' @param x pts
 #' @param y layer
 #'
