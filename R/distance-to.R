@@ -19,7 +19,8 @@ distance_to <- function(x, y) {
 	if (sf::st_geometry_type(y, FALSE) %in%
 			c('POINT', 'MULTIPOINT', 'LINESTRING', 'MULTILINESTRING')) {
 		dists
-	} else {
+	} else if (sf::st_geometry_type(y, FALSE) %in%
+						 c('POLYGON', 'MULTIPOLYGON')){
 		dists[lengths(st_intersects(x, y)) > 0] <- 0
 		dists
 	}
