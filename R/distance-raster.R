@@ -44,6 +44,7 @@ distance_raster <- function(y, cellsize, extent = NULL, expand = NULL) {
 
 	dist <- distance_to(pts, y)
 
+	dist[dist < cellsize] <- 0
 
 	pols$dist <- dist
 
