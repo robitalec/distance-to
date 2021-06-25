@@ -39,6 +39,8 @@ distance_to <- function(x, y, measure = NULL) {
 			paired = TRUE,
 			measure = measure
 		)
+	} else {
+		if (!is.null(measure)) warning('"measure" ignored since x and y are not longlat')
 	}
 
 	if (sf::st_geometry_type(y, FALSE) %in%
