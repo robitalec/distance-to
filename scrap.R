@@ -37,6 +37,8 @@ source('R/distance-to.R')
 system.time(distance_to(ncpts, somenc, measure = 'geodesic'))
 system.time(nngeo::st_nn(ncpts, somenc, returnDist = TRUE))
 
+profvis::profvis(distance_to(ncpts, somenc, measure = 'geodesic'))
+
 dd <- distance_to(ncpts, somenc, measure = 'geodesic')
 nn <- nngeo::st_nn(ncpts, somenc, returnDist = TRUE)
 all.equal(as.vector(dd), unlist(nn$dist))
