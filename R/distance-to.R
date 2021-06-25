@@ -29,6 +29,11 @@ distance_to <- function(x, y) {
 	dists <- nabor::knn(data = ycoor, query = xcoor, k = 1L)
 
 	if (sf::st_is_longlat(x) & sf::st_is_longlat(y)) {
+		dists[['nn.dists']] <- geodist::geodist(
+			xcoor,
+			ycoor[dists[['nn.idx']],],
+			paired = TRUE
+		)
 	}
 
 	if (sf::st_geometry_type(y, FALSE) %in%
