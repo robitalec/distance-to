@@ -52,7 +52,9 @@ st_nn(seinepts, seineotherpts, returnDist = TRUE)
 
 
 # Grid --------------------------------------------------------------------
-g1 <- distance_raster(seine, 1e5)
+system.time(r <- distance_raster(seine, 1e5))
+system.time(r <- distance_raster(seine, 1e3))
+
 
 x <- seine
 y <- seine
@@ -86,9 +88,6 @@ g <- sf::st_as_sf(
 
 
 # Notes -------------------------------------------------------------------
-# check if st_crs is same
-
-
 # NOTE:
 # The underlying libnabo does not have a signalling value to identify
 # indices for invalid query points (e.g. those containing an NA).

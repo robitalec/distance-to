@@ -1,5 +1,5 @@
 Package: distanceto
-Title: Calculates Distance To
+Title: Calculate Distance To
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Alec L.",
