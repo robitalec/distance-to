@@ -5,7 +5,7 @@ library(nabor)
 # install.packages('spData')
 library(sf)
 
-npts <- 100
+npts <- 1e5
 
 nc <- st_read(system.file("shapes/sids.shp", package="spData"))
 somenc <- nc[sample(length(nc), 5),]
