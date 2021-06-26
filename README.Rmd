@@ -43,8 +43,19 @@ ncpts <- st_sample(nc, npts)
 ncsub <- nc[1:5,]
 
 # Measure distance from ncpts to first 5 of nc, printing result
-distance_to(ncpts, ncsub, measure = 'geodesic')
+dists <- distance_to(ncpts, ncsub, measure = 'geodesic')
 
-# or add to ncpts
-ncpts$dist <- distance_to(ncpts, ncsub, measure = 'geodesic')
+head(dists, 30)
+
+# Add to ncpts
+ncpts$dist <- dists
 ```
+
+
+
+## Other approaches
+
+* `nngeo::st_nn`
+* `gdal_proximity`
+* `raster::distance`
+* GUI GIS applications
