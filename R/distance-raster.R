@@ -73,7 +73,7 @@ distance_raster <- function(y, cellsize, extent = NULL, expand = NULL,
 			stop('cellsize selected may result in long run times', '\n', '\n',
 					 '  distance_raster is meant to provide an approximate distance surface', '\n',
 					 '  see distance_to for exact measurements', '\n','\n',
-					 '  turn off "check" to prevent this warning'
+					 '  turn off "check" to prevent this error'
 			)
 		}
 	}
