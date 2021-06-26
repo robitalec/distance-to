@@ -50,3 +50,15 @@ checki <- full[i,]
 checki$dist <- d
 mapview::mapview(checki[checki$dist == 0,], zcol = 'dist') +
 	mapview::mapview(full[o,], col.regions = 'red')
+# geometry       geometry.1
+# 1    POINT (140 85)   POINT (140 90)
+# 2   POINT (100 -80)  POINT (105 -80)
+# 3    POINT (-5 -90)  POINT (-10 -90)
+# 4  POINT (-130 -60) POINT (-130 -65)
+# 5     POINT (75 50)    POINT (80 50)
+# 6    POINT (65 -35)   POINT (60 -35)
+# 7    POINT (20 -90)   POINT (20 -85)
+# 8   POINT (-155 10)   POINT (-155 5)
+# 9    POINT (-25 65)   POINT (-30 65)
+# 10  POINT (-115 15)  POINT (-115 10)
+# dist = 0
