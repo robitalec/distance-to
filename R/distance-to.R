@@ -46,7 +46,6 @@
 #'
 #' # or add to ncpts
 #' ncpts$dist <- distance_to(ncpts, ncsub, measure = 'geodesic')
-#'
 distance_to <- function(x, y, measure = NULL) {
 	if (!all(sf::st_geometry_type(x, TRUE) %in% c('POINT', 'MULTIPOINT'))) {
 		stop('x provided must be a POINT or MULTIPOINT as determined by sf::st_geometry_type')
