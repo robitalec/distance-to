@@ -10,7 +10,9 @@
 #'
 #' @examples
 distance_to <- function(x, y, measure = NULL) {
-	# check if x is always pts
+	if (!all(sf::st_geometry_type(seinepts, TRUE) %in% c('POINT', 'MULTIPOINT'))) {
+		stop('x provided must be a POINT or MULTIPOINT as determined by sf::st_geometry_type')
+	}
 
 	# TODO: necessary?
 	# if (length(unique(sf::st_geometry_type(y))) != 1) {
