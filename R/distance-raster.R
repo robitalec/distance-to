@@ -24,7 +24,7 @@ distance_raster <- function(y, cellsize, extent = NULL, expand = NULL, check = T
 	if (!is.null(extent) & is.null(expand)) {
 		x <- extent
 	} else if (is.null(extent) & !is.null(expand)) {
-		x <- st_bbox(y) - (st_bbox(y) * rep(c(-expand, expand), 2))
+		x <- sf::st_bbox(y) - (sf::st_bbox(y) * rep(c(-expand, expand), 2))
 	} else if (is.null(extent) & is.null(expand)) {
 		x <- sf::st_bbox(y)
 	} else if (!is.null(extent) & !is.null(expand)) {
