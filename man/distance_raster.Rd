@@ -38,8 +38,8 @@ Generates a distance surface from layer \code{y}.
 Calculates the distance of each pixel to the features in layer \code{y}.
 First, generates a regular grid of points in the bounding box of \code{y} or optionally provided
 \code{extent}. Then measures the distance from each point to the nearest feature
-in layer \code{y} using \code{distanceto::distance_to()}. Finally, returns a raster
-of distances using the excellent package \code{fasterize}.
+in layer \code{y} using \code{distanceto::distance_to()}. Finally, returns the grid
+of distances, rasterized using the excellent package \code{fasterize}.
 
 Note: this function is intended to provide a rough, low-res look at your
 distance surface. The function \code{distanceto::distance_to()} should be used
@@ -47,9 +47,8 @@ for all precise measurements from points to features, as it avoids the
 costly procedure of generating an entire distance surface by calculating
 geographic distances directly between points \code{x} and features in layer \code{y}.
 
-The features in layer \code{y} are expected to be an \code{sf} object and
-the distances are returned as vector, easily added to input \code{x} with \verb{$<-}
-or other methods. If the input CRS of features in layer \code{y} is longlat, eg. 4326,
+The features in layer \code{y} are expected to be an \code{sf} object.
+If the input CRS of features in layer \code{y} is longlat, eg. 4326,
 the distance is returned as measured by \code{geodist::geodist}. Otherwise, if the
 input CRS indicates projected coordinates, the distance measured is the
 euclidean distance.
