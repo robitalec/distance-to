@@ -57,5 +57,4 @@ distance_to(ncpts, ncsub, measure = 'geodesic')
 
 # or add to ncpts
 ncpts$dist <- distance_to(ncpts, ncsub, measure = 'geodesic')
-
 }
