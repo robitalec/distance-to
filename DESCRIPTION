@@ -1,6 +1,6 @@
 Package: distanceto
 Title: Calculate Distance To
-Version: 0.0.1.9000
+Version: 0.0.1
 Authors@R: 
     person(given = "Alec L.",
            family = "Robitaille",
