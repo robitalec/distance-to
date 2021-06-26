@@ -7,13 +7,55 @@
 distance_to(x, y, measure = NULL)
 }
 \arguments{
-\item{x}{pts}
+\item{x}{points to measure distances from, to layer \code{y}. Expecting an \code{sf}
+point compatible with \code{sf::st_coordinates} such as an \code{sf}, \code{sfc} or
+\code{sfg} object with geometry type 'POINT' or 'MULTIPOINT'. CRS of \code{x} should match CRS of \code{y}.}
 
-\item{y}{layer}
+\item{y}{feature layer to measure distance to. Expecting an \code{sf} point, line
+or polygon compatible with \code{sf::st_coordinates} such as an \code{sf}, \code{sfc}
+or \code{sfg} object. CRS of \code{y} should match CRS of \code{x}.}
+
+\item{measure}{method used to measure geographic distances between longlat
+\code{x} and \code{y} objects. See \code{geodist::geodist} for more information. Ignored if
+CRS of \code{x} and \code{y} indicated projected coordinates.}
 }
 \value{
 
 }
 \description{
-nabor = Euclidean distance
+Measures the distance from points x to features in layer y.
+}
+\details{
+Uses the function \code{nabor::knn} to determine the distance from each point in \code{x}
+to the nearest feature in layer \code{y}. If the input CRS is longlat, eg. 4326,
+the distance is returned as measured by \code{geodist::geodist}. Otherwise, if the
+input CRS indicates projected coordinates, the distance measured is the
+euclidean distance. Both \code{x} and \code{y} are expected to be \code{sf} objects and
+the distances are returned as vector, easily added to input \code{x} with \verb{$<-}
+or other methods. If \code{y} is a 'POLYGON' or 'MULTIPOLYGON' object, the
+distance returned for points in \code{x} within features in \code{y} are set to 0.
+}
+\examples{
+# Load sf
+library(sf)
+
+# Load nc data
+nc <- st_read(system.file("shapes/sids.shp", package="spData"))
+st_crs(nc) <- "+proj=longlat +datum=NAD27"
+
+# Set number of sampling points
+npts <- 1e3
+
+# Sample points in nc
+ncpts <- st_sample(nc, npts)
+
+# Select first 5 of nc
+ncsub <- nc[1:5,]
+
+# Measure distance from ncpts to first 5 of nc, printing result
+distance_to(ncpts, ncsub, measure = 'geodesic')
+
+# or add to ncpts
+ncpts$dist <- distance_to(ncpts, ncsub, measure = 'geodesic')
+
 }
