@@ -5,8 +5,8 @@
 #' Calculates the distance of each pixel to the features in layer `y`.
 #' First, generates a regular grid of points in the bounding box of `y` or optionally provided
 #' `extent`. Then measures the distance from each point to the nearest feature
-#' in layer `y` using `distanceto::distance_to()`. Finally, returns a raster
-#' of distances using the excellent package `fasterize`.
+#' in layer `y` using `distanceto::distance_to()`. Finally, returns the grid
+#' of distances, rasterized using the excellent package `fasterize`.
 #'
 #' Note: this function is intended to provide a rough, low-res look at your
 #' distance surface. The function `distanceto::distance_to()` should be used
