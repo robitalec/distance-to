@@ -15,9 +15,12 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Suggests: 
     fasterize,
+    knitr,
+    rmarkdown,
     spData,
     tinytest
 Imports: 
     sf,
     nabor,
     geodist
+VignetteBuilder: knitr
