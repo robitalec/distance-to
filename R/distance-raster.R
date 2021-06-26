@@ -12,6 +12,11 @@
 #'
 #' @examples
 distance_raster <- function(y, cellsize, extent = NULL, expand = NULL, check = TRUE) {
+	if (!requireNamespace("fasterize", quietly = TRUE)) {
+		stop("Package \"fasterize\" needed for distance_raster(). Please install it.",
+				 call. = FALSE)
+	}
+
 	if (!is.null(extent) & class(extent) != 'bbox') {
 		stop('extent must be of class bbox from sf::st_bbox')
 	}
