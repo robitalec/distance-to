@@ -36,4 +36,17 @@ g <- geodist::geodist(
 	st_coordinates(full[o,]),
 	measure = measure
 )
-g
+
+cbind(full[i,], full[o,][d$nn.idx,])#[d$nn.dists == 0,]
+
+geodist::geodist(
+	st_coordinates(full[i,][d$nn.dists == 0,]),
+	st_coordinates(full[o,][d$nn.idx,][d$nn.dists == 0,]),
+	paired = TRUE,
+	measure = 'geodesic'
+)
+
+checki <- full[i,]
+checki$dist <- d
+mapview::mapview(checki[checki$dist == 0,], zcol = 'dist') +
+	mapview::mapview(full[o,], col.regions = 'red')
