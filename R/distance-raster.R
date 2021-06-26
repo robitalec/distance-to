@@ -14,9 +14,8 @@
 #' costly procedure of generating an entire distance surface by calculating
 #' geographic distances directly between points `x` and features in layer `y`.
 #'
-#' The features in layer `y` are expected to be an `sf` object and
-#' the distances are returned as vector, easily added to input `x` with `$<-`
-#' or other methods. If the input CRS of features in layer `y` is longlat, eg. 4326,
+#' The features in layer `y` are expected to be an `sf` object.
+#' If the input CRS of features in layer `y` is longlat, eg. 4326,
 #' the distance is returned as measured by `geodist::geodist`. Otherwise, if the
 #' input CRS indicates projected coordinates, the distance measured is the
 #' euclidean distance.
