@@ -40,12 +40,12 @@ d <- distance_to(ncpts, somenc, measure = 'geodesic')
 
 
 # Tests -------------------------------------------------------------------
-# Return types
+# Output types
 expect_inherits(d, 'numeric')
 expect_equal(typeof(d), 'double')
 
 
-# Return limits
+# Output limits
 expect_true(all(d >= 0))
 
 
