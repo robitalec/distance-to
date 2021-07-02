@@ -15,17 +15,25 @@
 #' geographic distances directly between points `x` and features in layer `y`.
 #'
 #' The features in layer `y` are expected to be an `sf` object.
-#' If the input CRS of features in layer `y` is longlat, eg. 4326,
+#' If the input CRS of features in layer `y` is longlat, eg. EPSG 4326,
 #' the distance is returned as measured by `geodist::geodist`. Otherwise, if the
 #' input CRS indicates projected coordinates, the distance measured is the
 #' euclidean distance.
+#'
+#' The `extent` argument can be used to provide an alternative bounding box to
+#' generate the distance surface within. This might be useful, for example, if
+#' your features in layer `y` are in a larger area than you require or if you'd
+#' like to generate distance surfaces with a specific extent. The `expand`
+#' argument can be used to expand the bounding box calculated for layer `y` or
+#' provided by argument `extent`. This is just a simple multiplier on the min
+#' and max XY of the bounding box to generate a larger surface.
 #'
 #' @param cellsize in unit of projection
 #' @param y feature layer to measure distance to. Expecting an `sf` point, line
 #' or polygon compatible with `sf::st_coordinates` such as an `sf`, `sfc`
 #' or `sfg` object.
-#' @param extent optional alternative extent bbox
-#' @param expand 0-1 scaling eg. 5% expansion = 0.05
+#' @param extent optional alternative extent bounding box. See details.
+#' @param expand 0-1 scaling eg. 5% expansion = 0.05. See details.
 #' @param measure method used to measure geographic distances.
 #' See `geodist::geodist` for more information. Ignored if CRS of `y`
 #' indicates projected coordinates.
