@@ -28,9 +28,11 @@ surface.}
 \item{measure}{method used to measure geographic distances.
 See \code{geodist::geodist} for more information. Ignored if CRS of \code{y}
 indicates projected coordinates.}
+
+\item{check}{default: TRUE. Checks the cellsize against the size of the feature layers \code{y} bounding box or optional \code{extent} argument.}
 }
 \value{
-
+A distance \code{raster} surface.
 }
 \description{
 Generates a distance surface from layer \code{y}.
@@ -74,5 +76,5 @@ st_crs(nc) <- "+proj=longlat +datum=NAD27"
 ncsub <- nc[1:5,]
 
 # Generate a distance raster from some of nc within extent of all of nc
-distance_raster(ncsub, 1e4, st_bbox(nc))
+distance_raster(ncsub, 0.1, st_bbox(nc), measure = 'geodesic')
 }

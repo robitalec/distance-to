@@ -20,7 +20,7 @@ or \code{sfg} object. CRS of \code{y} should match CRS of \code{x}.}
 CRS of \code{x} and \code{y} indicated projected coordinates.}
 }
 \value{
-
+A \code{vector} of distances from points in \code{x} to features in layer \code{y}.
 }
 \description{
 Measures the distance from points x to features in layer y.

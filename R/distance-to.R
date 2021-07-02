@@ -22,6 +22,8 @@
 #' CRS of `x` and `y` indicated projected coordinates.
 #'
 #' @return
+#'
+#' A `vector` of distances from points in `x` to features in layer `y`.
 #' @export
 #'
 #' @examples
