@@ -90,11 +90,24 @@ g <- sf::st_as_sf(
 
 
 # Compare -----------------------------------------------------------------
+dist_fix_lonlat <- function(x, y, measure = NULL) {
+	g <- geodist::geodist(
+		st_coordinates(x),
+		st_coordinates(y),
+		paired = FALSE,
+		measure = measure
+	)
+	apply(g, 1, min)
+}
+
+
 # Pts and polygons
-system.time(dnc <- distance_to(ncpts, somenc, measure = 'geodesic'))
+system.time(dfnc <- dist_fix_lonlat(ncpts, somenc, measure = 'geodesic'))
+system.time(dfcheapnc <- dist_fix_lonlat(ncpts, somenc, measure = 'cheap'))
 system.time(nnc <- nngeo::st_nn(ncpts, somenc, returnDist = TRUE))
 
-all.equal(dnc, unlist(nnc$dist))
+all.equal(dfnc, unlist(nnc$dist))
+all.equal(dnc, dfnc)
 
 # Pts and lines
 system.time(dse <- distance_to(seinepts, seine))
