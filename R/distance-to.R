@@ -85,9 +85,9 @@ distance_to <- function(x, y, measure = NULL) {
 }
 
 
-distance_to_lonlat <- function(x, y, measure) {
+distance_to_lonlat <- function(xcoor, ycoor, measure) {
 	if (is.null(measure)) {
-		warning('measure is required if x and y are longlat - see geodist::geodist')
+		stop('measure is required if x and y are longlat - see geodist::geodist')
 	}
 	g <- geodist::geodist(
 		xcoor,
