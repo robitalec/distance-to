@@ -3,9 +3,9 @@
 #' Measures the distance from points x to features in layer y.
 #'
 #' Uses the function `nabor::knn` to determine the distance from each point in `x`
-#' to the nearest feature in layer `y`. If the input CRS is longlat, eg. 4326,
+#' to the nearest feature in layer `y`. If the input CRS is longlat, eg. EPSG 4326,
 #' the distance is returned as measured by `geodist::geodist`. Otherwise, if the
-#' input CRS indicates projected coordinates, the distance measured is the
+#' input CRS indicates projected coordinates, the distance returned is the
 #' euclidean distance. Both `x` and `y` are expected to be `sf` objects and
 #' the distances are returned as vector, easily added to input `x` with `$<-`
 #' or other methods. If `y` is a 'POLYGON' or 'MULTIPOLYGON' object, the

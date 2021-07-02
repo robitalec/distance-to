@@ -27,9 +27,9 @@ Measures the distance from points x to features in layer y.
 }
 \details{
 Uses the function \code{nabor::knn} to determine the distance from each point in \code{x}
-to the nearest feature in layer \code{y}. If the input CRS is longlat, eg. 4326,
+to the nearest feature in layer \code{y}. If the input CRS is longlat, eg. EPSG 4326,
 the distance is returned as measured by \code{geodist::geodist}. Otherwise, if the
-input CRS indicates projected coordinates, the distance measured is the
+input CRS indicates projected coordinates, the distance returned is the
 euclidean distance. Both \code{x} and \code{y} are expected to be \code{sf} objects and
 the distances are returned as vector, easily added to input \code{x} with \verb{$<-}
 or other methods. If \code{y} is a 'POLYGON' or 'MULTIPOLYGON' object, the
