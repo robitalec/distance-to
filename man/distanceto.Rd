@@ -30,6 +30,7 @@ Useful links:
 \itemize{
   \item \url{https://github.com/robitalec/distance-to}
   \item \url{https://robitalec.github.io/distance-to/}
+  \item Report bugs at \url{https://github.com/robitalec/distance-to/issues}
 }
 
 }
