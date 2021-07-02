@@ -5,10 +5,10 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "distanceto",
-  "description": "What the package does (one paragraph).",
+  "description": "Calculates distance to features from point locations.",
   "name": "distanceto: Calculate Distance To",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -51,6 +51,30 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "knitr",
+      "name": "knitr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=knitr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "rmarkdown",
+      "name": "rmarkdown",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "spData",
       "name": "spData",
       "provider": {
@@ -60,6 +84,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=spData"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "raster",
+      "name": "raster",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=raster"
     },
     {
       "@type": "SoftwareApplication",
@@ -114,6 +150,9 @@
   ],
   "codeRepository": "https://github.com/robitalec/distance-to",
   "readme": "https://github.com/robitalec/distance-to/blob/main/README.md",
-  "fileSize": "13.101KB",
-  "releaseNotes": "https://github.com/robitalec/distance-to/blob/master/NEWS.md"
+  "fileSize": "77.331KB",
+  "releaseNotes": "https://github.com/robitalec/distance-to/blob/master/NEWS.md",
+  "relatedLink": "https://robitalec.github.io/distance-to/",
+  "issueTracker": "https://github.com/robitalec/distance-to/issues",
+  "developmentStatus": "https://lifecycle.r-lib.org/articles/stages.html#experimental"
 }
