@@ -58,11 +58,14 @@ ncpts <- st_sample(nc, npts)
 # Select first 5 of nc
 ncsub <- nc[1:5,]
 
-# Measure distance from ncpts to first 5 of nc, printing result
-distance_to(ncpts, ncsub, measure = 'geodesic')
+# Measure distance from ncpts to first 5 of nc
+dist <- distance_to(ncpts, ncsub, measure = 'geodesic')
 
 # or add to ncpts
-ncpts$dist <- distance_to(ncpts, ncsub, measure = 'geodesic')
+ncpts$dist <- dist
+
+head(dist, 30)
+hist(dist)
 ```
 
 
@@ -81,9 +84,12 @@ npts <- 1e2
 # Sample points within buffer seine
 seinepts <- st_sample(bufseine, npts)
 
-# Measure distance from seine points to seine, printing result
-distance_to(seinepts, seine)
+# Measure distance from seine points to seine
+dist <- distance_to(seinepts, seine)
 
 # or add to seine points
-seinepts$dist <- distance_to(seinepts, seine)
+seinepts$dist <- dist
+
+head(dist, 30)
+hist(dist)
 ```
