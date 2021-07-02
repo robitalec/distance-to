@@ -47,11 +47,29 @@ expect_true(all(d >= 0))
 
 
 # Warnings
-
+# "measure" ignored since x and y are not longlat
 
 # Errors
+expect_error(distance_to(),
+						 'x must be provided')
+expect_error(distance_to(42),
+						 'y must be provided')
+expect_error(distance_to(ncpts, 42),
+						 'x and y must be sf objects')
+expect_error(distance_to(st_linestring(matrix(42, 0, 2)),
+												 st_point(c(42, 42))),
+						 'x provided must be a POINT or MULTIPOINT')
 
+difcrs <- ncpts
+st_crs(difcrs) <- 32621
+expect_error(distance_to(ncpts, difcrs),
+						 'sf::st_crs')
 
+# cant test: both x and y must be long lat degrees, or neither
+# since covered by previous
+
+expect_error(distance_to(ncpts, somenc, measure = NULL),
+						 'measure is required')
 
 
 # Scrap -------------------------------------------------------------------
