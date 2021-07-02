@@ -2,20 +2,77 @@
 % Please edit documentation in R/distance-raster.R
 \name{distance_raster}
 \alias{distance_raster}
-\title{Distance raster}
+\title{Distance to raster}
 \usage{
-distance_raster(y, cellsize, extent = NULL, expand = NULL, check = TRUE)
+distance_raster(
+  y,
+  cellsize,
+  extent = NULL,
+  expand = NULL,
+  measure = NULL,
+  check = TRUE
+)
 }
 \arguments{
-\item{cellsize}{in unit of projection}
+\item{y}{feature layer to measure distance to. Expecting an \code{sf} point, line
+or polygon compatible with \code{sf::st_coordinates} such as an \code{sf}, \code{sfc}
+or \code{sfg} object.}
 
-\item{extent}{optional alternative extent bbox}
+\item{cellsize}{size, in unit of projection, of pixels of output distance
+surface.}
 
-\item{expand}{0-1 scaling eg. 5\% expansion = 0.05}
+\item{extent}{optional alternative extent bounding box. See details.}
+
+\item{expand}{0-1 scaling eg. 5\% expansion = 0.05. See details.}
+
+\item{measure}{method used to measure geographic distances.
+See \code{geodist::geodist} for more information. Ignored if CRS of \code{y}
+indicates projected coordinates.}
 }
 \value{
 
 }
 \description{
-Warnings + recommend pt based
+Generates a distance surface from layer \code{y}.
+}
+\details{
+Calculates the distance of each pixel to the features in layer \code{y}.
+First, generates a regular grid of points in the bounding box of \code{y} or optionally provided
+\code{extent}. Then measures the distance from each point to the nearest feature
+in layer \code{y} using \code{distanceto::distance_to()}. Finally, returns the grid
+of distances, rasterized using the excellent package \code{fasterize}.
+
+Note: this function is intended to provide a rough, low-res look at your
+distance surface. The function \code{distanceto::distance_to()} should be used
+for all precise measurements from points to features, as it avoids the
+costly procedure of generating an entire distance surface by calculating
+geographic distances directly between points \code{x} and features in layer \code{y}.
+
+The features in layer \code{y} are expected to be an \code{sf} object.
+If the input CRS of features in layer \code{y} is longlat, eg. EPSG 4326,
+the distance is returned as measured by \code{geodist::geodist}. Otherwise, if the
+input CRS indicates projected coordinates, the distance measured is the
+euclidean distance.
+
+The \code{extent} argument can be used to provide an alternative bounding box to
+generate the distance surface within. This might be useful, for example, if
+your features in layer \code{y} are in a larger area than you require or if you'd
+like to generate distance surfaces with a specific extent. The \code{expand}
+argument can be used to expand the bounding box calculated for layer \code{y} or
+provided by argument \code{extent}. This is just a simple multiplier on the min
+and max XY of the bounding box to generate a larger surface.
+}
+\examples{
+# Load sf
+library(sf)
+
+# Load nc data
+nc <- st_read(system.file("shapes/sids.shp", package="spData"))
+st_crs(nc) <- "+proj=longlat +datum=NAD27"
+
+# Select first 5 of nc
+ncsub <- nc[1:5,]
+
+# Generate a distance raster from some of nc within extent of all of nc
+distance_raster(somenc, 1e4, st_bbox(nc))
 }
