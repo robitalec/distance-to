@@ -67,7 +67,7 @@ expect_error(distance_to(st_linestring(matrix(42, 0, 2)),
 difcrs <- ncpts
 st_crs(difcrs) <- 32621
 expect_error(distance_to(ncpts, difcrs),
-						 'sf::st_crs')
+						 'crs of x and y must match')
 
 # cant test: both x and y must be long lat degrees, or neither
 # since covered by previous
