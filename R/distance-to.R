@@ -46,7 +46,6 @@
 #'
 #' # or add to ncpts
 #' ncpts$dist <- distance_to(ncpts, ncsub, measure = 'geodesic')
-#'
 distance_to <- function(x, y, measure = NULL) {
 	if (missing(x)) stop('x must be provided')
 	if (missing(y)) stop('y must be provided')

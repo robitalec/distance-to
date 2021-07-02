@@ -36,6 +36,8 @@ seinepts <- sample_bbox(bufseine[1, ], npts)
 # Run ---------------------------------------------------------------------
 d <- distance_to(ncpts, somenc, measure = 'geodesic')
 
+dproj <- distance_to(seinepts, seine)
+dgeo <- d
 
 
 
@@ -44,9 +46,14 @@ d <- distance_to(ncpts, somenc, measure = 'geodesic')
 expect_inherits(d, 'numeric')
 expect_equal(typeof(d), 'double')
 
+expect_equal(typeof(dgeo), typeof(dproj))
+expect_equal(class(dgeo), class(dproj))
+
 
 # Output limits
 expect_true(all(d >= 0))
+
+expect_equal(all(dgeo >= 0), all(dproj >= 0))
 
 
 # Warnings
