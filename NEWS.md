@@ -1,6 +1,6 @@
 # distanceto (development version)
 
-* add basic set of tests with [`tinytest`](https://github.com/markvanderloo/tinytest/)
+* add basic set of tests for `distance_to` and `distance_raster` with [`tinytest`](https://github.com/markvanderloo/tinytest/)
 * fill `distance_raster` man
 * fix distance calculation when crs indicates long lat, unprojected coordinates
 * use GitHub Actions for test workflow

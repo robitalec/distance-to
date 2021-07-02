@@ -54,7 +54,7 @@
 #' ncsub <- nc[1:5,]
 #'
 #' # Generate a distance raster from some of nc within extent of all of nc
-#' distance_raster(somenc, 1e4, st_bbox(nc))
+#' distance_raster(ncsub, 1e4, st_bbox(nc))
 distance_raster <- function(y, cellsize, extent = NULL, expand = NULL,
 														measure = NULL, check = TRUE) {
 	if (!requireNamespace('fasterize', quietly = TRUE)) {
@@ -64,6 +64,10 @@ distance_raster <- function(y, cellsize, extent = NULL, expand = NULL,
 
 	if (!is.null(extent) & class(extent) != 'bbox') {
 		stop('extent must be of class bbox from sf::st_bbox')
+	}
+
+	if (sf::st_is_longlat(y) & cellsize >= 100) {
+		warning('cellsize >= 100 - but y is long lat \n check that cellsize is in units of the projection')
 	}
 
 	if (!is.null(extent) & is.null(expand)) {
