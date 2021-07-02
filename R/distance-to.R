@@ -61,17 +61,20 @@ distance_to <- function(x, y, measure = NULL) {
 	}
 
 	if (sf::st_crs(x) != sf::st_crs(y)) {
-		stop('sf::st_crs(x) must be the same as sf::st_crs(y)')
+		stop('crs of x and y must match - see sf::st_crs(x) and sf::st_crs(y)')
 	}
 
 	if (sf::st_is_longlat(x) != sf::st_is_longlat(y)) {
-		stop('both x and y must be long lat degrees, or neither')
+		stop('both x and y must be long lat degrees, or neither - see sf::st_is_longlat')
 	}
 
+	xcoor <- sf::st_coordinates(x)[, c(1, 2)]
+	ycoor <- sf::st_coordinates(y)[, c(1, 2)]
+
 	if (sf::st_is_longlat(x) & sf::st_is_longlat(y)) {
-		d <- distance_to_lonlat(x, y, measure)
+		d <- distance_to_lonlat(xcoor, ycoor, measure)
 	} else {
-		d <- distance_to_proj(x, y, measure)
+		d <- distance_to_proj(xcoor, ycoor, measure)
 	}
 
 	if (sf::st_geometry_type(y, FALSE) %in% c('POLYGON', 'MULTIPOLYGON')){
@@ -96,11 +99,10 @@ distance_to_lonlat <- function(x, y, measure) {
 }
 
 
-distance_to_proj <- function(x, y, measure = NULL) {
-	if (!is.null(measure)) warning('"measure" ignored since x and y are not longlat')
-
-	xcoor <- sf::st_coordinates(x)[, c(1, 2)]
-	ycoor <- sf::st_coordinates(y)[, c(1, 2)]
+distance_to_proj <- function(xcoor, ycoor, measure = NULL) {
+	if (!is.null(measure)) {
+		warning('"measure" ignored since x and y are not longlat - see sf::st_is_longlat')
+	}
 	dists <- nabor::knn(data = ycoor, query = xcoor, k = 1L)
 	as.vector(dists[['nn.dists']])
 }
