@@ -28,9 +28,11 @@ surface.}
 \item{measure}{method used to measure geographic distances.
 See \code{geodist::geodist} for more information. Ignored if CRS of \code{y}
 indicates projected coordinates.}
+
+\item{check}{default: TRUE. Checks the cellsize against the size of the feature layers \code{y} bounding box or optional \code{extent} argument.}
 }
 \value{
-
+A distance \code{raster} surface.
 }
 \description{
 Generates a distance surface from layer \code{y}.
