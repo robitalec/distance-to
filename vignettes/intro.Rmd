@@ -42,3 +42,48 @@ library(distanceto)
 library(sf)
 ```
 
+
+## Longlat/unprojected
+```{r}
+# Load nc data
+nc <- st_read(system.file("shapes/sids.shp", package="spData"))
+st_crs(nc) <- "+proj=longlat +datum=NAD27"
+
+# Set number of sampling points
+npts <- 1e3
+
+# Sample points in nc
+ncpts <- st_sample(nc, npts)
+
+# Select first 5 of nc
+ncsub <- nc[1:5,]
+
+# Measure distance from ncpts to first 5 of nc, printing result
+distance_to(ncpts, ncsub, measure = 'geodesic')
+
+# or add to ncpts
+ncpts$dist <- distance_to(ncpts, ncsub, measure = 'geodesic')
+```
+
+
+## Projected
+
+```{r}
+# Load seine data
+data('seine', package = 'spData')
+
+# Buffer seine by 1000 metres
+bufseine <- st_buffer(seine, 1000)
+
+# Set number of sampling points
+npts <- 1e2
+
+# Sample points within buffer seine
+seinepts <- st_sample(bufseine, npts)
+
+# Measure distance from seine points to seine, printing result
+distance_to(seinepts, seine)
+
+# or add to seine points
+seinepts$dist <- distance_to(seinepts, seine)
+```
