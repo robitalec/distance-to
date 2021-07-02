@@ -66,6 +66,10 @@ distance_raster <- function(y, cellsize, extent = NULL, expand = NULL,
 		stop('extent must be of class bbox from sf::st_bbox')
 	}
 
+	if (sf::st_is_longlat(y) & cellsize >= 100) {
+		warning('cellsize >= 100 - but y is long lat \n check that cellsize is in units of the projection')
+	}
+
 	if (!is.null(extent) & is.null(expand)) {
 		x <- extent
 	} else if (is.null(extent) & !is.null(expand)) {
