@@ -28,7 +28,8 @@
 #' provided by argument `extent`. This is just a simple multiplier on the min
 #' and max XY of the bounding box to generate a larger surface.
 #'
-#' @param cellsize in unit of projection
+#' @param cellsize size, in unit of projection, of pixels of output distance
+#' surface.
 #' @param y feature layer to measure distance to. Expecting an `sf` point, line
 #' or polygon compatible with `sf::st_coordinates` such as an `sf`, `sfc`
 #' or `sfg` object.
