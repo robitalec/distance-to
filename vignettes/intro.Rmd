@@ -35,7 +35,7 @@ The `distanceto` package provides two functions:
 * `distance_raster`
 
 
-# Example
+# Example: `distance_to`
 
 ```{r setup}
 library(distanceto)
@@ -92,4 +92,16 @@ seinepts$dist <- dist
 
 head(dist, 30)
 hist(dist)
+```
+
+
+
+# Example: `distance_raster`
+
+```{r}
+library(raster)
+
+rdist <- distance_raster(seine, 1e4)
+
+plot(rdist)
 ```
