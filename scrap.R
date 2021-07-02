@@ -1,7 +1,6 @@
 # Scrap working script ----------------------------------------------------
 # Alec Robitaille
 
-library(nabor)
 # install.packages('spData')
 library(sf)
 
@@ -32,69 +31,37 @@ source('R/distance-to.R')
 
 
 
-# Run ---------------------------------------------------------------------
-# Pts and polygons
-system.time(distance_to(ncpts, somenc, measure = 'geodesic'))
-system.time(nngeo::st_nn(ncpts, somenc, returnDist = TRUE))
-
-profvis::profvis(distance_to(ncpts, somenc, measure = 'geodesic'))
-
-dd <- distance_to(ncpts, somenc, measure = 'geodesic')
-nn <- nngeo::st_nn(ncpts, somenc, returnDist = TRUE)
-all.equal(as.vector(dd), unlist(nn$dist))
-
-# Pts and lines
-distance_to(seinepts, seine)
-
-# Pts and pts
-distance_to(seinepts, seineotherpts)
-
-st_nn(seinepts, seineotherpts, returnDist = TRUE)
-
-
-
 # Grid --------------------------------------------------------------------
 system.time(r <- distance_raster(seine, 1e5))
 system.time(r <- distance_raster(seine, 1e3))
 
 
-x <- seine
-y <- seine
-cellsize <- 1e4
-
-pols <- sf::st_as_sf(sf::st_make_grid(
-	x,
-	cellsize = cellsize,
-	what = 'polygons'
-))
-pts <- st_as_sf(sf::st_make_grid(
-	x,
-	cellsize = cellsize,
-	what = 'centers'
-))
-
-pols$dist <- as.vector(distance_to(pts, y))
-
-mapview(fasterize::fasterize(pols, fasterize::raster(pols, res = cellsize), field = 'dist'))
-
-g <- data.frame(dist = )
-g$geom <- grid
-st_as_sf(g)
-
-mapview(grid)
-g <- sf::st_as_sf(
-	grid#,
-	# dist = distance_to(grid, y)
-)
-
-
-
 # Compare -----------------------------------------------------------------
+# old robitalec/wildcam approach
+eval_dist <- function(x, layer) {
+	sf::st_distance(x, layer[sf::st_nearest_feature(x, layer),],
+									by_element = TRUE)
+}
+
+View(bench::mark(
+	distance_to(ncpts, somenc, measure = 'geodesic'),
+	eval_dist(ncpts, somenc),
+	nngeo::st_nn(ncpts, somenc, returnDist = TRUE),
+	check = FALSE
+))
+
+
 # Pts and polygons
-system.time(dnc <- distance_to(ncpts, somenc, measure = 'geodesic'))
+system.time(dfcheapnc <- distance_to(ncpts, somenc, measure = 'cheap'))
+system.time(dfgeonc <- distance_to(ncpts, somenc, measure = 'geodesic'))
+system.time(ed <- eval_dist(ncpts, somenc))
 system.time(nnc <- nngeo::st_nn(ncpts, somenc, returnDist = TRUE))
 
-all.equal(dnc, unlist(nnc$dist))
+
+all.equal(dfcheapnc, unlist(nnc$dist))
+all.equal(dfgeonc, unlist(nnc$dist))
+all.equal(dfgeonc, dfcheapnc)
+
 
 # Pts and lines
 system.time(dse <- distance_to(seinepts, seine))
@@ -107,18 +74,3 @@ system.time(dseo <- distance_to(seinepts, seineotherpts))
 system.time(nseo <- nngeo::st_nn(seinepts, seineotherpts, returnDist = TRUE))
 
 all.equal(dseo, unlist(nseo$dist))
-
-
-
-# Notes -------------------------------------------------------------------
-# NOTE:
-# The underlying libnabo does not have a signalling value to identify
-# indices for invalid query points (e.g. those containing an NA).
-# In this situation, the index returned by libnabo will be 0 and
-# knn will therefore return an index of 1. However the distance
-# will be Inf signalling a failure to find a nearest neighbour.
-
-# compare speed to st_nearest version
-# compare speed to raster
-
-# check input output lengths

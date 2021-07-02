@@ -18,6 +18,7 @@ Suggests:
     knitr,
     rmarkdown,
     spData,
+    raster,
     tinytest
 Imports: 
     sf,
