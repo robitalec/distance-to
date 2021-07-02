@@ -38,8 +38,12 @@
 #' @param measure method used to measure geographic distances.
 #' See `geodist::geodist` for more information. Ignored if CRS of `y`
 #' indicates projected coordinates.
+#' @param check default: TRUE. Checks the cellsize against the size of the feature layers `y` bounding box or optional `extent` argument.
 #'
 #' @return
+#'
+#' A distance `raster` surface.
+#'
 #' @export
 #'
 #' @examples
