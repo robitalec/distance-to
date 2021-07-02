@@ -48,9 +48,8 @@
 #' distance_raster(somenc, 1e4, st_bbox(nc))
 distance_raster <- function(y, cellsize, extent = NULL, expand = NULL,
 														measure = NULL, check = TRUE) {
-	# TODO: add measure arg
-	if (!requireNamespace("fasterize", quietly = TRUE)) {
-		stop("Package \"fasterize\" needed for distance_raster(). Please install it.",
+	if (!requireNamespace('fasterize', quietly = TRUE)) {
+		stop('Package "fasterize" needed for distance_raster(). Please install it.',
 				 call. = FALSE)
 	}
 
@@ -73,33 +72,33 @@ distance_raster <- function(y, cellsize, extent = NULL, expand = NULL,
 			stop('cellsize selected may result in long run times', '\n', '\n',
 					 '  distance_raster is meant to provide an approximate distance surface', '\n',
 					 '  see distance_to for exact measurements', '\n','\n',
-					 '  turn off "check" to prevent this warning'
+					 '  turn off "check" to prevent this error'
 			)
 		}
 	}
 
 
 	pols <- sf::st_as_sf(sf::st_make_grid(
-		x,
+		x = x,
 		cellsize = cellsize,
 		what = 'polygons'
 	))
 
 	pts <- sf::st_make_grid(
-		x,
+		x= x,
 		cellsize = cellsize,
 		what = 'centers'
 	)
 
-	dist <- distance_to(pts, y)
+	dist <- distance_to(x = pts, y = y, measure = measure)
 
 	dist[dist < cellsize] <- 0
 
 	pols$dist <- dist
 
 	fasterize::fasterize(
-		pols,
-		fasterize::raster(pols, res = cellsize),
+		sf = pols,
+		raster = fasterize::raster(pols, res = cellsize),
 		field = 'dist'
 	)
 }
