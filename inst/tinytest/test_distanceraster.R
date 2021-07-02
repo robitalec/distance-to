@@ -40,12 +40,14 @@ expect_true(all(d >= 0))
 expect_equal(all(rgeo >= 0), all(rproj >= 0))
 
 
-# Warnings
-
 # Errors
+# Not sure how to test atm
 # Package "fasterize" needed for distance_raster(). Please install it.
 
 
-# extent must be of class bbox from sf::st_bbox
+expect_error(distance_raster(nc, extent = 42),
+						 'extent must be of class bbox from sf::st_bbox')
 
-# cellsize selected may result in long run times
+expect_error(distance_raster(nc, cellsize = 0.1),
+						 'cellsize selected may result in long run times')
+
