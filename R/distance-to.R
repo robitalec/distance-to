@@ -3,9 +3,9 @@
 #' Measures the distance from points x to features in layer y.
 #'
 #' Uses the function `nabor::knn` to determine the distance from each point in `x`
-#' to the nearest feature in layer `y`. If the input CRS is longlat, eg. 4326,
+#' to the nearest feature in layer `y`. If the input CRS is longlat, eg. EPSG 4326,
 #' the distance is returned as measured by `geodist::geodist`. Otherwise, if the
-#' input CRS indicates projected coordinates, the distance measured is the
+#' input CRS indicates projected coordinates, the distance returned is the
 #' euclidean distance. Both `x` and `y` are expected to be `sf` objects and
 #' the distances are returned as vector, easily added to input `x` with `$<-`
 #' or other methods. If `y` is a 'POLYGON' or 'MULTIPOLYGON' object, the
@@ -46,42 +46,62 @@
 #'
 #' # or add to ncpts
 #' ncpts$dist <- distance_to(ncpts, ncsub, measure = 'geodesic')
-#'
 distance_to <- function(x, y, measure = NULL) {
+	if (missing(x)) stop('x must be provided')
+	if (missing(y)) stop('y must be provided')
+
+	if (!all(any(c('sf', 'sfc', 'sfg') %in% class(x)) &
+					any(c('sf', 'sfc', 'sfg') %in% class(y)))) {
+		stop("x and y must be sf objects")
+	}
+
 	if (!all(sf::st_geometry_type(x, TRUE) %in% c('POINT', 'MULTIPOINT'))) {
 		stop('x provided must be a POINT or MULTIPOINT as determined by sf::st_geometry_type')
 	}
 
 	if (sf::st_crs(x) != sf::st_crs(y)) {
-		stop('sf::st_crs(x) must be the same as sf::st_crs(y)')
+		stop('crs of x and y must match - see sf::st_crs(x) and sf::st_crs(y)')
 	}
 
 	if (sf::st_is_longlat(x) != sf::st_is_longlat(y)) {
-		stop('both x and y must be long lat degrees, or neither')
+		stop('both x and y must be long lat degrees, or neither - see sf::st_is_longlat')
 	}
 
 	xcoor <- sf::st_coordinates(x)[, c(1, 2)]
 	ycoor <- sf::st_coordinates(y)[, c(1, 2)]
-	dists <- nabor::knn(data = ycoor, query = xcoor, k = 1L)
 
 	if (sf::st_is_longlat(x) & sf::st_is_longlat(y)) {
-		if (is.null(measure)) {
-			stop('measure is required if x and y are longlat - see geodist::geodist')
-		}
-		dists[['nn.dists']] <- geodist::geodist(
-			xcoor,
-			ycoor[dists[['nn.idx']],],
-			paired = TRUE,
-			measure = measure
-		)
+		d <- distance_to_lonlat(xcoor, ycoor, measure)
 	} else {
-		if (!is.null(measure)) warning('"measure" ignored since x and y are not longlat')
+		d <- distance_to_proj(xcoor, ycoor, measure)
 	}
 
-	if (sf::st_geometry_type(y, FALSE) %in%
-						 c('POLYGON', 'MULTIPOLYGON')){
-		dists[['nn.dists']][lengths(sf::st_intersects(x, y)) > 0] <- 0
+	if (sf::st_geometry_type(y, FALSE) %in% c('POLYGON', 'MULTIPOLYGON')){
+		d[lengths(sf::st_intersects(x, y)) > 0] <- 0
 	}
 
+	return(d)
+}
+
+
+distance_to_lonlat <- function(xcoor, ycoor, measure) {
+	if (is.null(measure)) {
+		stop('measure is required if x and y are longlat - see geodist::geodist')
+	}
+	g <- geodist::geodist(
+		xcoor,
+		ycoor,
+		paired = FALSE,
+		measure = measure
+	)
+	apply(g, 1, min)
+}
+
+
+distance_to_proj <- function(xcoor, ycoor, measure = NULL) {
+	if (!is.null(measure)) {
+		warning('"measure" ignored since x and y are not longlat - see sf::st_is_longlat')
+	}
+	dists <- nabor::knn(data = ycoor, query = xcoor, k = 1L)
 	as.vector(dists[['nn.dists']])
 }
