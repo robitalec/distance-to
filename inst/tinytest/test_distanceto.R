@@ -25,40 +25,10 @@ ncpts <- sample_bbox(nc, npts)
 
 
 # Full globe
-measure <- 'geodesic'
-full <- st_as_sf(expand.grid(lon = seq(-180, 180, 5), lat = seq(-90, 90, 5)),
-								 coords = c('lon', 'lat'), crs = 4326)
-i <- sample(nrow(full), nrow(full) / 2)
-o <- seq.int(nrow(full))[!seq.int(nrow(full)) %in% i]
-d <- distance_to(full[i,], full[o,], measure = measure)
-g <- geodist::geodist(
-	st_coordinates(full[i,]),
-	st_coordinates(full[o,]),
-	measure = measure
-)
-
-cbind(full[i,], full[o,][d$nn.idx,])#[d$nn.dists == 0,]
-
-geodist::geodist(
-	st_coordinates(full[i,][d$nn.dists == 0,]),
-	st_coordinates(full[o,][d$nn.idx,][d$nn.dists == 0,]),
-	paired = TRUE,
-	measure = 'geodesic'
-)
-
-checki <- full[i,]
-checki$dist <- d
-mapview::mapview(checki[checki$dist == 0,], zcol = 'dist') +
-	mapview::mapview(full[o,], col.regions = 'red')
-# geometry       geometry.1
-# 1    POINT (140 85)   POINT (140 90)
-# 2   POINT (100 -80)  POINT (105 -80)
-# 3    POINT (-5 -90)  POINT (-10 -90)
-# 4  POINT (-130 -60) POINT (-130 -65)
-# 5     POINT (75 50)    POINT (80 50)
-# 6    POINT (65 -35)   POINT (60 -35)
-# 7    POINT (20 -90)   POINT (20 -85)
-# 8   POINT (-155 10)   POINT (-155 5)
-# 9    POINT (-25 65)   POINT (-30 65)
-# 10  POINT (-115 15)  POINT (-115 10)
-# dist = 0
+# measure <- 'geodesic'
+# by <- 2.5
+# full <- st_as_sf(expand.grid(lon = seq(-180, 180, by), lat = seq(-90, 90, by)),
+# 								 coords = c('lon', 'lat'), crs = 4326)
+# i <- sample(nrow(full), nrow(full) / 2)
+# o <- seq.int(nrow(full))[!seq.int(nrow(full)) %in% i]
+# dists <- distance_to(full[i,], full[o,], measure = measure)
