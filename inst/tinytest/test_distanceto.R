@@ -28,6 +28,9 @@ st_crs(nc) <- "+proj=longlat +datum=NAD27"
 somenc <- nc[sample(length(nc), 5),]
 ncpts <- sample_bbox(nc, npts)
 
+data('seine', package = 'spData')
+bufseine <- st_buffer(seine, npts)
+seinepts <- sample_bbox(bufseine[1, ], npts)
 
 
 # Run ---------------------------------------------------------------------
