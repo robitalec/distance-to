@@ -25,6 +25,14 @@ The \code{distanceto} package provides two functions:
 \item \code{distance_raster}
 }
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/robitalec/distance-to}
+  \item \url{https://robitalec.github.io/distance-to/}
+}
+
+}
 \author{
 \strong{Maintainer}: Alec L. Robitaille \email{robit.alec@gmail.com} (\href{https://orcid.org/0000-0002-4706-1762}{ORCID})
 
