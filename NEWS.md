@@ -5,6 +5,7 @@
 * fix distance calculation when crs indicates long lat, unprojected coordinates
 * basic intro vignette
 * use GitHub Actions for test workflow
+* add basic pkgdown site
 * add "measure" argument to `distance_raster`
 
 
