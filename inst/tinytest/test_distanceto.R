@@ -50,7 +50,8 @@ expect_true(all(d >= 0))
 
 
 # Warnings
-# "measure" ignored since x and y are not longlat
+expect_warning(distance_to(seinepts, seine, measure = 'geodesic'),
+							 '"measure" ignored since x and y are not longlat')
 
 # Errors
 expect_error(distance_to(),
