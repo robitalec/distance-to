@@ -3,6 +3,7 @@
 * add basic set of tests for `distance_to` and `distance_raster` with [`tinytest`](https://github.com/markvanderloo/tinytest/)
 * fill `distance_raster` man
 * fix distance calculation when crs indicates long lat, unprojected coordinates
+* basic intro vignette
 * use GitHub Actions for test workflow
 * add "measure" argument to `distance_raster`
 

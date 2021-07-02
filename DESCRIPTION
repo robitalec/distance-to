@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "robit.alec@gmail.com",
            comment = c(ORCID = "0000-0002-4706-1762"))
-Description: What the package does (one paragraph).
+Description: Calculates distance to features from point locations.
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
@@ -15,6 +15,8 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Suggests: 
     fasterize,
+    knitr,
+    rmarkdown,
     spData,
     raster,
     tinytest
@@ -22,3 +24,4 @@ Imports:
     sf,
     nabor,
     geodist
+VignetteBuilder: knitr

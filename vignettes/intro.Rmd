@@ -1,0 +1,107 @@
+---
+title: "Introduction to distanceto"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{intro}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+# Overview
+
+The `distanceto` package is designed to quickly sample distances from points
+features to other vector layers. Normally the approach for calculating distance
+to (something) involves generating distance surfaces using raster based approaches
+eg. `raster::distance` or `gdal_proximity` and subsequently point sampling these
+surfaces. Since raster based approaches are a costly method that frequently leads
+to memory issues or long and slow run times with high resolution data or large
+study sites, we have opted to compute these distances using vector based
+approaches. As a helper, there's a decidedly low-res raster based approach for
+visually inspecting your region's distance surface. But the workhorse is
+`distance_to`.
+
+
+The `distanceto` package provides two functions:
+
+* `distance_to`
+* `distance_raster`
+
+
+# Example: `distance_to`
+
+```{r setup}
+library(distanceto)
+library(sf)
+```
+
+
+## Longlat/unprojected
+```{r}
+# Load nc data
+nc <- st_read(system.file("shapes/sids.shp", package="spData"))
+st_crs(nc) <- "+proj=longlat +datum=NAD27"
+
+# Set number of sampling points
+npts <- 1e3
+
+# Sample points in nc
+ncpts <- st_sample(nc, npts)
+
+# Select first 5 of nc
+ncsub <- nc[1:5,]
+
+# Measure distance from ncpts to first 5 of nc
+dist <- distance_to(ncpts, ncsub, measure = 'geodesic')
+
+# or add to ncpts
+ncpts$dist <- dist
+
+head(dist, 30)
+hist(dist)
+```
+
+
+## Projected
+
+```{r}
+# Load seine data
+data('seine', package = 'spData')
+
+# Buffer seine by 1000 metres
+bufseine <- st_buffer(seine, 1000)
+
+# Set number of sampling points
+npts <- 1e2
+
+# Sample points within buffer seine
+seinepts <- st_sample(bufseine, npts)
+
+# Measure distance from seine points to seine
+dist <- distance_to(seinepts, seine)
+
+# or add to seine points
+seinepts$dist <- dist
+
+head(dist, 30)
+hist(dist)
+```
+
+
+
+# Example: `distance_raster`
+
+```{r}
+library(raster)
+
+rdist <- distance_raster(seine, 1e4)
+
+plot(rdist)
+```
