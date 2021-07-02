@@ -48,6 +48,14 @@
 #' ncpts$dist <- distance_to(ncpts, ncsub, measure = 'geodesic')
 #'
 distance_to <- function(x, y, measure = NULL) {
+	if (missing(x)) stop('x must be provided')
+	if (missing(y)) stop('y must be provided')
+
+	if (!all(any(c('sf', 'sfc', 'sfg') %in% class(x)) &
+					any(c('sf', 'sfc', 'sfg') %in% class(y)))) {
+		stop("x and y must be sf objects")
+	}
+
 	if (!all(sf::st_geometry_type(x, TRUE) %in% c('POINT', 'MULTIPOINT'))) {
 		stop('x provided must be a POINT or MULTIPOINT as determined by sf::st_geometry_type')
 	}
