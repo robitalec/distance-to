@@ -31,11 +31,6 @@ source('R/distance-to.R')
 
 
 
-# Grid --------------------------------------------------------------------
-system.time(r <- distance_raster(seine, 1e5))
-system.time(r <- distance_raster(seine, 1e3))
-
-
 # Compare -----------------------------------------------------------------
 # old robitalec/wildcam approach
 eval_dist <- function(x, layer) {
@@ -43,10 +38,17 @@ eval_dist <- function(x, layer) {
 									by_element = TRUE)
 }
 
+# 3.13m to 1.56m
 View(bench::mark(
 	distance_to(ncpts, somenc, measure = 'geodesic'),
 	eval_dist(ncpts, somenc),
-	nngeo::st_nn(ncpts, somenc, returnDist = TRUE),
+	check = FALSE
+))
+
+# 2.15s to 11.05m
+View(bench::mark(
+	distance_to(seinepts, seine),
+	eval_dist(seinepts, seine),
 	check = FALSE
 ))
 
@@ -74,3 +76,8 @@ system.time(dseo <- distance_to(seinepts, seineotherpts))
 system.time(nseo <- nngeo::st_nn(seinepts, seineotherpts, returnDist = TRUE))
 
 all.equal(dseo, unlist(nseo$dist))
+
+
+# Grid --------------------------------------------------------------------
+system.time(r <- distance_raster(seine, 1e5))
+system.time(r <- distance_raster(seine, 1e3))
