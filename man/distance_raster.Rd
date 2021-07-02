@@ -74,5 +74,5 @@ st_crs(nc) <- "+proj=longlat +datum=NAD27"
 ncsub <- nc[1:5,]
 
 # Generate a distance raster from some of nc within extent of all of nc
-distance_raster(somenc, 1e4, st_bbox(nc))
+distance_raster(ncsub, 1e4, st_bbox(nc))
 }
