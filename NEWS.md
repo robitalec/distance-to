@@ -1,4 +1,4 @@
-# distanceto (development version)
+# distanceto 0.0.2
 
 * add basic set of tests for `distance_to` and `distance_raster` with [`tinytest`](https://github.com/markvanderloo/tinytest/)
 * fill `distance_raster` man
