@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">distanceto</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.2</span>
       </span>
     </div>
 
@@ -62,7 +62,14 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.com/robitalec/distance-to/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -78,7 +85,7 @@
       <h1 data-toc-skip>Introduction to distanceto</h1>
             
       
-      
+      <small class="dont-index">Source: <a href="https://github.com/robitalec/distance-to/blob/master/vignettes/intro.Rmd"><code>vignettes/intro.Rmd</code></a></small>
       <div class="hidden name"><code>intro.Rmd</code></div>
 
     </div>
@@ -100,7 +107,7 @@
 <a href="#example-distance_to" class="anchor"></a>Example: <code>distance_to</code>
 </h1>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">distanceto</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/robitalec/distance-to">distanceto</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span>
 <span class="co">#&gt; Linking to GEOS 3.9.1, GDAL 3.2.3, PROJ 8.0.1</span></code></pre></div>
 <div id="longlatunprojected" class="section level2">
@@ -135,11 +142,11 @@
 <span class="va">ncpts</span><span class="op">$</span><span class="va">dist</span> <span class="op">&lt;-</span> <span class="va">dist</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">dist</span>, <span class="fl">30</span><span class="op">)</span>
-<span class="co">#&gt;  [1]  21318.5958 215653.9160 158128.8304  54790.5475 138518.9832  86193.2585</span>
-<span class="co">#&gt;  [7] 206515.0053  17690.9078  63991.5845  91186.5072 121431.8958 136499.8032</span>
-<span class="co">#&gt; [13]    751.9639  94226.0911 182035.4673  13038.1948  97105.5950 142071.8102</span>
-<span class="co">#&gt; [19]  64743.6878  98203.5928 238317.5568  69048.4712 142234.5136 171154.9588</span>
-<span class="co">#&gt; [25]  72252.2242 163336.3848  18091.6617 136953.0756 163747.8498  49694.7711</span>
+<span class="co">#&gt;  [1]  69170.572  94691.024  55137.980      0.000 104423.749  93035.031</span>
+<span class="co">#&gt;  [7] 103668.312 140574.301  55107.186  61705.852  67701.372 189578.221</span>
+<span class="co">#&gt; [13] 115155.470      0.000 128007.295  89100.853 164333.203 209414.846</span>
+<span class="co">#&gt; [19] 128742.511  34246.213  50834.879 101772.779 102510.672  74503.198</span>
+<span class="co">#&gt; [25] 125536.720  96022.694  92399.512  94645.538   3621.384  68600.032</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">dist</span><span class="op">)</span></code></pre></div>
 <p><img src="intro_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
 </div>
@@ -166,11 +173,11 @@
 <span class="va">seinepts</span><span class="op">$</span><span class="va">dist</span> <span class="op">&lt;-</span> <span class="va">dist</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">dist</span>, <span class="fl">30</span><span class="op">)</span>
-<span class="co">#&gt;  [1]  534.1237  701.8121 1201.2315  604.4275  224.5200 1410.7405  641.1198</span>
-<span class="co">#&gt;  [8] 1396.9834  835.9284  880.5694  274.4487  324.6613 2228.0730  525.9142</span>
-<span class="co">#&gt; [15]  407.0903  586.8889 1822.5807 1625.5774 3293.5604  591.8837 1422.2865</span>
-<span class="co">#&gt; [22]  925.9612 1189.3097  430.9867 1020.0572  298.0844 5506.7662  627.8165</span>
-<span class="co">#&gt; [29] 1307.7387 1035.6657</span>
+<span class="co">#&gt;  [1]  141.1600 1708.2127  453.4780  877.4737  524.3576 1635.6506  557.9336</span>
+<span class="co">#&gt;  [8]  963.7649  770.2118  330.4320  746.1570  630.6266  882.1246  952.9051</span>
+<span class="co">#&gt; [15] 2211.3012  203.9389  331.1289 1824.8333  782.3002  875.9662  148.3173</span>
+<span class="co">#&gt; [22]  596.4483 1530.5836  660.8008  494.7669 4946.8324  968.5504 1019.8165</span>
+<span class="co">#&gt; [29] 2648.6321 3483.6507</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">dist</span><span class="op">)</span></code></pre></div>
 <p><img src="intro_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
 </div>
