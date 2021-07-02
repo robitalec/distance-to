@@ -8,6 +8,7 @@ Authors@R:
            email = "robit.alec@gmail.com",
            comment = c(ORCID = "0000-0002-4706-1762"))
 Description: Calculates distance to features from point locations.
+URL: https://github.com/robitalec/distance-to, https://robitalec.github.io/distance-to/ 
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
