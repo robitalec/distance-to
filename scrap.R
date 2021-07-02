@@ -37,10 +37,26 @@ system.time(r <- distance_raster(seine, 1e3))
 
 
 # Compare -----------------------------------------------------------------
+# old robitalec/wildcam approach
+eval_dist <- function(x, layer) {
+	sf::st_distance(x, layer[sf::st_nearest_feature(x, layer),],
+									by_element = TRUE)
+}
+
+View(bench::mark(
+	distance_to(ncpts, somenc, measure = 'geodesic'),
+	eval_dist(ncpts, somenc),
+	nngeo::st_nn(ncpts, somenc, returnDist = TRUE),
+	check = FALSE
+))
+
+
 # Pts and polygons
-system.time(dfcheapnc <- dist_fix_lonlat(ncpts, somenc, measure = 'cheap'))
-system.time(dfgeonc <- dist_fix_lonlat(ncpts, somenc, measure = 'geodesic'))
+system.time(dfcheapnc <- distance_to(ncpts, somenc, measure = 'cheap'))
+system.time(dfgeonc <- distance_to(ncpts, somenc, measure = 'geodesic'))
+system.time(ed <- eval_dist(ncpts, somenc))
 system.time(nnc <- nngeo::st_nn(ncpts, somenc, returnDist = TRUE))
+
 
 all.equal(dfcheapnc, unlist(nnc$dist))
 all.equal(dfgeonc, unlist(nnc$dist))
