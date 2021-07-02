@@ -40,7 +40,7 @@ expect_equal(cellStats(rproj >= 0, 'sum'), ncell(rproj))
 
 
 # Warnings
-expect_warning(distance_raster(nc, cellsize = 0.5, measure = 'geodesic'),
+expect_warning(distance_raster(nc, cellsize = 100, measure = 'geodesic'),
 							 'cellsize >= 100')
 
 # Errors
@@ -51,6 +51,6 @@ expect_warning(distance_raster(nc, cellsize = 0.5, measure = 'geodesic'),
 expect_error(distance_raster(nc, 1e5, extent = 42),
 						 'extent must be of class bbox from sf::st_bbox')
 
-expect_error(distance_raster(nc, cellsize = ),
+expect_error(distance_raster(nc, cellsize = 0.01),
 						 'cellsize selected may result in long run times')
 
