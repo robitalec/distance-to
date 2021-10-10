@@ -69,7 +69,7 @@ expect_error(distance_to(ncpts, 42),
 						 'x and y must be sf objects')
 expect_error(distance_to(st_linestring(matrix(42, 0, 2)),
 												 st_point(c(42, 42))),
-						 'x provided must be a POINT or MULTIPOINT')
+						 'x must be a POINT or MULTIPOINT')
 
 difcrs <- ncpts
 st_crs(difcrs) <- 32621
