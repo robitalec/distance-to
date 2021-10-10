@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Introduction to distanceto • distanceto</title>
+<title>Introduction to distance-to • distanceto</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to distanceto">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to distance-to">
 <meta property="og:description" content="distanceto">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -54,7 +54,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/intro.html">Introduction to distanceto</a>
+      <a href="../articles/intro.html">Introduction to distance-to</a>
     </li>
   </ul>
 </li>
@@ -79,10 +79,10 @@
 
       
 
-      </header><script src="intro_files/header-attrs-2.8/header-attrs.js"></script><div class="row">
+      </header><script src="intro_files/header-attrs-2.11.3/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Introduction to distanceto</h1>
+      <h1 data-toc-skip>Introduction to distance-to</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/robitalec/distance-to/blob/master/vignettes/intro.Rmd"><code>vignettes/intro.Rmd</code></a></small>
@@ -102,18 +102,30 @@
 <li><code>distance_raster</code></li>
 </ul>
 </div>
-<div id="example-distance_to" class="section level1">
+<div id="install" class="section level1">
 <h1 class="hasAnchor">
-<a href="#example-distance_to" class="anchor"></a>Example: <code>distance_to</code>
-</h1>
+<a href="#install" class="anchor"></a>Install</h1>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Enable the robitalec universe</span>
+<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+    robitalec <span class="op">=</span> <span class="st">'https://robitalec.r-universe.dev'</span>,
+    CRAN <span class="op">=</span> <span class="st">'https://cloud.r-project.org'</span><span class="op">)</span><span class="op">)</span>
+
+<span class="co"># Install distanceto</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">'distanceto'</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="distance_to" class="section level1">
+<h1 class="hasAnchor">
+<a href="#distance_to" class="anchor"></a><code>distance_to</code>
+</h1>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/robitalec/distance-to">distanceto</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span>
-<span class="co">#&gt; Linking to GEOS 3.9.1, GDAL 3.2.3, PROJ 8.0.1</span></code></pre></div>
-<div id="longlatunprojected" class="section level2">
+<span class="co">#&gt; Linking to GEOS 3.9.1, GDAL 3.3.1, PROJ 8.0.1</span></code></pre></div>
+<div id="long-lat-unprojected-coordinates" class="section level2">
 <h2 class="hasAnchor">
-<a href="#longlatunprojected" class="anchor"></a>Longlat/unprojected</h2>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<a href="#long-lat-unprojected-coordinates" class="anchor"></a>Long-lat / unprojected coordinates</h2>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Load nc data</span>
 <span class="va">nc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">st_read</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"shapes/sids.shp"</span>, package<span class="op">=</span><span class="st">"spData"</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; Reading layer `sids' from data source </span>
@@ -142,18 +154,18 @@
 <span class="va">ncpts</span><span class="op">$</span><span class="va">dist</span> <span class="op">&lt;-</span> <span class="va">dist</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">dist</span>, <span class="fl">30</span><span class="op">)</span>
-<span class="co">#&gt;  [1]  69170.572  94691.024  55137.980      0.000 104423.749  93035.031</span>
-<span class="co">#&gt;  [7] 103668.312 140574.301  55107.186  61705.852  67701.372 189578.221</span>
-<span class="co">#&gt; [13] 115155.470      0.000 128007.295  89100.853 164333.203 209414.846</span>
-<span class="co">#&gt; [19] 128742.511  34246.213  50834.879 101772.779 102510.672  74503.198</span>
-<span class="co">#&gt; [25] 125536.720  96022.694  92399.512  94645.538   3621.384  68600.032</span>
+<span class="co">#&gt;  [1]  59159.73 170372.41 239410.32 100642.25 112655.00 219361.44 120556.75</span>
+<span class="co">#&gt;  [8] 165470.20  36997.22 204245.47  81224.35 104191.92 175883.53 138352.96</span>
+<span class="co">#&gt; [15] 192734.88 146158.76 208500.33 114880.88 164632.04  73676.32 209448.55</span>
+<span class="co">#&gt; [22]  82645.85  94063.64 111207.91 114373.67  27710.88 143440.15  10248.95</span>
+<span class="co">#&gt; [29]  95629.69 136262.55</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">dist</span><span class="op">)</span></code></pre></div>
 <p><img src="intro_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
 </div>
-<div id="projected" class="section level2">
+<div id="projected-coordinates" class="section level2">
 <h2 class="hasAnchor">
-<a href="#projected" class="anchor"></a>Projected</h2>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<a href="#projected-coordinates" class="anchor"></a>Projected coordinates</h2>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Load seine data</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">'seine'</span>, package <span class="op">=</span> <span class="st">'spData'</span><span class="op">)</span>
 
@@ -173,20 +185,20 @@
 <span class="va">seinepts</span><span class="op">$</span><span class="va">dist</span> <span class="op">&lt;-</span> <span class="va">dist</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">dist</span>, <span class="fl">30</span><span class="op">)</span>
-<span class="co">#&gt;  [1]  141.1600 1708.2127  453.4780  877.4737  524.3576 1635.6506  557.9336</span>
-<span class="co">#&gt;  [8]  963.7649  770.2118  330.4320  746.1570  630.6266  882.1246  952.9051</span>
-<span class="co">#&gt; [15] 2211.3012  203.9389  331.1289 1824.8333  782.3002  875.9662  148.3173</span>
-<span class="co">#&gt; [22]  596.4483 1530.5836  660.8008  494.7669 4946.8324  968.5504 1019.8165</span>
-<span class="co">#&gt; [29] 2648.6321 3483.6507</span>
+<span class="co">#&gt;  [1] 1475.4729  804.7909 2965.4492  741.4175 1882.2771  941.2033 1506.2992</span>
+<span class="co">#&gt;  [8]  621.2957  579.0929 1643.1096 1581.4075  469.7743  636.9162 1432.3008</span>
+<span class="co">#&gt; [15]  574.4903  714.2305  619.2407  596.5574  939.0630 1490.0131  294.1060</span>
+<span class="co">#&gt; [22]  631.5090 2691.5918  941.1175  618.8345  959.0653  625.5747  854.7989</span>
+<span class="co">#&gt; [29]  719.2472  914.5645</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">dist</span><span class="op">)</span></code></pre></div>
 <p><img src="intro_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
 </div>
 </div>
-<div id="example-distance_raster" class="section level1">
+<div id="distance_raster" class="section level1">
 <h1 class="hasAnchor">
-<a href="#example-distance_raster" class="anchor"></a>Example: <code>distance_raster</code>
+<a href="#distance_raster" class="anchor"></a><code>distance_raster</code>
 </h1>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/raster">raster</a></span><span class="op">)</span>
 <span class="co">#&gt; Loading required package: sp</span>
 
