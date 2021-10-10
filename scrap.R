@@ -4,7 +4,7 @@
 # install.packages('spData')
 library(sf)
 
-npts <- 1e5
+npts <- 1e3
 
 sample_bbox <- function(shape, n) {
 	bbox <- sf::st_bbox(shape)
@@ -49,7 +49,8 @@ View(bench::mark(
 View(bench::mark(
 	distance_to(seinepts, seine),
 	eval_dist(seinepts, seine),
-	check = FALSE
+	check = FALSE,
+	relative = TRUE
 ))
 
 
@@ -64,6 +65,13 @@ all.equal(dfcheapnc, unlist(nnc$dist))
 all.equal(dfgeonc, unlist(nnc$dist))
 all.equal(dfgeonc, dfcheapnc)
 
+View(bench::mark(
+	distance_to(ncpts, somenc, measure = 'cheap'),
+	distance_to(ncpts, somenc, measure = 'geodesic'),
+	nngeo::st_nn(ncpts, somenc, returnDist = TRUE),
+	check = FALSE,
+	relative = TRUE
+))
 
 # Pts and lines
 system.time(dse <- distance_to(seinepts, seine))
