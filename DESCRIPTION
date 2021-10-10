@@ -7,7 +7,15 @@ Authors@R:
            role = c("aut", "cre"),
            email = "robit.alec@gmail.com",
            comment = c(ORCID = "0000-0002-4706-1762"))
-Description: Calculates distance to features from point locations.
+Description: Calculates distances from point locations to features.
+    The usual approach for eg. resource selection function analyses is to
+    generate a complete distance to surface then sample it with your 
+    observed and random points. Since these raster based approaches can be
+    pretty costly with large areas, and often lead to memory issues in R, 
+    the distanceto package opts to compute these distances using
+    efficient, vector based approaches. As a helper, there's a decidedly 
+    low-res raster based approach for visually inspecting your region's 
+    distance surface. But the workhorse is distance_to.
 URL: https://github.com/robitalec/distance-to, https://robitalec.github.io/distance-to/
 BugReports: https://github.com/robitalec/distance-to/issues
 License: GPL (>= 3)
