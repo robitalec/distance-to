@@ -47,7 +47,7 @@ ncpts <- st_sample(nc, npts)
 # Select first 5 of nc
 ncsub <- nc[1:5,]
 
-# Measure distance from ncpts to first 5 of nc, printing result
+# Measure distance from ncpts to first 5 of nc
 dists <- distance_to(ncpts, ncsub, measure = 'geodesic')
 
 head(dists, 30)
