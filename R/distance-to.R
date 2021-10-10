@@ -13,7 +13,8 @@
 #'
 #' @param x points to measure distances from, to layer `y`. Expecting an `sf`
 #' point compatible with `sf::st_coordinates` such as an `sf`, `sfc` or
-#' `sfg` object with geometry type 'POINT' or 'MULTIPOINT'. CRS of `x` should match CRS of `y`.
+#' `sfg` object with geometry type 'POINT' or 'MULTIPOINT'. CRS of `x`
+#' should match CRS of `y`.
 #' @param y feature layer to measure distance to. Expecting an `sf` point, line
 #' or polygon compatible with `sf::st_coordinates` such as an `sf`, `sfc`
 #' or `sfg` object. CRS of `y` should match CRS of `x`.
@@ -58,7 +59,7 @@ distance_to <- function(x, y, measure = NULL) {
 	}
 
 	if (!all(sf::st_geometry_type(x, TRUE) %in% c('POINT', 'MULTIPOINT'))) {
-		stop('x provided must be a POINT or MULTIPOINT as determined by sf::st_geometry_type')
+		stop('x must be a POINT or MULTIPOINT as determined by sf::st_geometry_type')
 	}
 
 	if (sf::st_crs(x) != sf::st_crs(y)) {

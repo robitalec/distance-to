@@ -29,7 +29,8 @@ surface.}
 See \code{geodist::geodist} for more information. Ignored if CRS of \code{y}
 indicates projected coordinates.}
 
-\item{check}{default: TRUE. Checks the cellsize against the size of the feature layers \code{y} bounding box or optional \code{extent} argument.}
+\item{check}{default: TRUE. Checks the cellsize against the size
+of the feature layers \code{y} bounding box or optional \code{extent} argument.}
 }
 \value{
 A distance \code{raster} surface.
@@ -39,7 +40,8 @@ Generates a distance surface from layer \code{y}.
 }
 \details{
 Calculates the distance of each pixel to the features in layer \code{y}.
-First, generates a regular grid of points in the bounding box of \code{y} or optionally provided
+First, generates a regular grid of points in the bounding box of \code{y} or
+optionally provided
 \code{extent}. Then measures the distance from each point to the nearest feature
 in layer \code{y} using \code{distanceto::distance_to()}. Finally, returns the grid
 of distances, rasterized using the excellent package \code{fasterize}.

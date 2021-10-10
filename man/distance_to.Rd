@@ -9,7 +9,8 @@ distance_to(x, y, measure = NULL)
 \arguments{
 \item{x}{points to measure distances from, to layer \code{y}. Expecting an \code{sf}
 point compatible with \code{sf::st_coordinates} such as an \code{sf}, \code{sfc} or
-\code{sfg} object with geometry type 'POINT' or 'MULTIPOINT'. CRS of \code{x} should match CRS of \code{y}.}
+\code{sfg} object with geometry type 'POINT' or 'MULTIPOINT'. CRS of \code{x}
+should match CRS of \code{y}.}
 
 \item{y}{feature layer to measure distance to. Expecting an \code{sf} point, line
 or polygon compatible with \code{sf::st_coordinates} such as an \code{sf}, \code{sfc}

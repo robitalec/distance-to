@@ -3,7 +3,8 @@
 #' Generates a distance surface from layer `y`.
 #'
 #' Calculates the distance of each pixel to the features in layer `y`.
-#' First, generates a regular grid of points in the bounding box of `y` or optionally provided
+#' First, generates a regular grid of points in the bounding box of `y` or
+#' optionally provided
 #' `extent`. Then measures the distance from each point to the nearest feature
 #' in layer `y` using `distanceto::distance_to()`. Finally, returns the grid
 #' of distances, rasterized using the excellent package `fasterize`.
@@ -38,7 +39,8 @@
 #' @param measure method used to measure geographic distances.
 #' See `geodist::geodist` for more information. Ignored if CRS of `y`
 #' indicates projected coordinates.
-#' @param check default: TRUE. Checks the cellsize against the size of the feature layers `y` bounding box or optional `extent` argument.
+#' @param check default: TRUE. Checks the cellsize against the size
+#' of the feature layers `y` bounding box or optional `extent` argument.
 #'
 #' @return
 #'
@@ -71,7 +73,8 @@ distance_raster <- function(y, cellsize, extent = NULL, expand = NULL,
 	}
 
 	if (sf::st_is_longlat(y) & cellsize >= 100) {
-		warning('cellsize >= 100 - but y is long lat \n check that cellsize is in units of the projection')
+		warning('cellsize >= 100 - but y is long lat')
+		warning('check that cellsize is in units of the projection')
 	}
 
 	if (!is.null(extent) & is.null(expand)) {
@@ -85,9 +88,11 @@ distance_raster <- function(y, cellsize, extent = NULL, expand = NULL,
 	}
 
 	if (check) {
-		if ((diff(x[c(1, 3)]) / cellsize) > 500 | (diff(x[c(2, 4)]) / cellsize) > 500) {
+		if ((diff(x[c(1, 3)]) / cellsize) > 500 |
+				(diff(x[c(2, 4)]) / cellsize) > 500) {
 			stop('cellsize selected may result in long run times', '\n', '\n',
-					 '  distance_raster is meant to provide an approximate distance surface', '\n',
+					 '  distance_raster is meant to provide an approximate distance surface',
+					 '\n',
 					 '  see distance_to for exact measurements', '\n','\n',
 					 '  turn off "check" to prevent this error'
 			)
