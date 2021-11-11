@@ -1,5 +1,5 @@
 Package: distanceto
-Title: Calculate Distance To
+Title: Calculate Distance to Features
 Version: 0.0.2
 Authors@R: 
     person(given = "Alec L.",
@@ -9,7 +9,7 @@ Authors@R:
            comment = c(ORCID = "0000-0002-4706-1762"))
 Description: Calculates distances from point locations to features.
     The usual approach for eg. resource selection function analyses is to
-    generate a complete distance to surface then sample it with your 
+    generate a complete distance to features surface then sample it with your 
     observed and random points. Since these raster based approaches can be
     pretty costly with large areas, and often lead to memory issues in R, 
     the distanceto package opts to compute these distances using
