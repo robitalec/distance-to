@@ -1,6 +1,6 @@
 Package: distanceto
 Title: Calculate Distance to Features
-Version: 0.0.2
+Version: 0.0.2.9000
 Authors@R: 
     person(given = "Alec L.",
            family = "Robitaille",
