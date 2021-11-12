@@ -1,20 +1,26 @@
 {
-  "@context": [
-    "https://doi.org/10.5063/schema/codemeta-2.0",
-    "http://schema.org"
-  ],
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "distanceto",
-  "description": "Calculates distance to features from point locations.",
-  "name": "distanceto: Calculate Distance To",
+  "description": "Calculates distances from point locations to features. The usual approach for eg. resource selection function analyses is to generate a complete distance to features surface then sample it with your observed and random points. Since these raster based approaches can be pretty costly with large areas, and often lead to memory issues in R, the distanceto package opts to compute these distances using efficient, vector based approaches. As a helper, there's a decidedly low-res raster based approach for visually inspecting your region's distance surface. But the workhorse is distance_to.",
+  "name": "distanceto: Calculate Distance to Features",
+  "relatedLink": "https://robitalec.github.io/distance-to/",
+  "codeRepository": "https://github.com/robitalec/distance-to",
+  "issueTracker": "https://github.com/robitalec/distance-to/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.0.2",
+  "version": "0.0.2.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.1.0 (2021-05-18)",
+  "runtimePlatform": "R version 4.1.1 (2021-08-10)",
+  "provider": {
+    "@id": "https://cran.r-project.org",
+    "@type": "Organization",
+    "name": "Comprehensive R Archive Network (CRAN)",
+    "url": "https://cran.r-project.org"
+  },
   "author": [
     {
       "@type": "Person",
@@ -24,9 +30,6 @@
       "@id": "https://orcid.org/0000-0002-4706-1762"
     }
   ],
-  "contributor": {},
-  "copyrightHolder": {},
-  "funder": {},
   "maintainer": [
     {
       "@type": "Person",
@@ -110,8 +113,8 @@
       "sameAs": "https://CRAN.R-project.org/package=tinytest"
     }
   ],
-  "softwareRequirements": [
-    {
+  "softwareRequirements": {
+    "1": {
       "@type": "SoftwareApplication",
       "identifier": "sf",
       "name": "sf",
@@ -123,7 +126,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=sf"
     },
-    {
+    "2": {
       "@type": "SoftwareApplication",
       "identifier": "nabor",
       "name": "nabor",
@@ -135,7 +138,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=nabor"
     },
-    {
+    "3": {
       "@type": "SoftwareApplication",
       "identifier": "geodist",
       "name": "geodist",
@@ -146,13 +149,8 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=geodist"
-    }
-  ],
-  "codeRepository": "https://github.com/robitalec/distance-to",
-  "readme": "https://github.com/robitalec/distance-to/blob/main/README.md",
-  "fileSize": "77.331KB",
-  "releaseNotes": "https://github.com/robitalec/distance-to/blob/master/NEWS.md",
-  "relatedLink": "https://robitalec.github.io/distance-to/",
-  "issueTracker": "https://github.com/robitalec/distance-to/issues",
-  "developmentStatus": "https://lifecycle.r-lib.org/articles/stages.html#experimental"
+    },
+    "SystemRequirements": null
+  },
+  "fileSize": "78.209KB"
 }
