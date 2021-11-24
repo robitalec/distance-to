@@ -1,0 +1,59 @@
+# -----------------------------------------------------------
+# CITATION file created with {cffr} R package, v0.1.1
+# See also: https://docs.ropensci.org/cffr/
+# -----------------------------------------------------------
+ 
+cff-version: 1.2.0
+message: 'To cite package "distanceto" in publications use:'
+type: software
+license: GPL-3.0-or-later
+title: 'distanceto: Calculate Distance to Features'
+version: 0.0.2.9000
+abstract: Calculates distances from point locations to features. The usual approach
+  for eg. resource selection function analyses is to generate a complete distance
+  to features surface then sample it with your observed and random points. Since these
+  raster based approaches can be pretty costly with large areas, and often lead to
+  memory issues in R, the distanceto package opts to compute these distances using
+  efficient, vector based approaches. As a helper, there's a decidedly low-res raster
+  based approach for visually inspecting your region's distance surface. But the workhorse
+  is distance_to.
+authors:
+- family-names: Robitaille
+  given-names: Alec L.
+  email: robit.alec@gmail.com
+  orcid: https://orcid.org/0000-0002-4706-1762
+preferred-citation:
+  type: manual
+  title: 'distanceto: Calculate Distance to Features'
+  authors:
+  - family-names: Robitaille
+    given-names: Alec L.
+    email: robit.alec@gmail.com
+    orcid: https://orcid.org/0000-0002-4706-1762
+  version: 0.0.2.9000
+  abstract: Calculates distances from point locations to features. The usual approach
+    for eg. resource selection function analyses is to generate a complete distance
+    to features surface then sample it with your observed and random points. Since
+    these raster based approaches can be pretty costly with large areas, and often
+    lead to memory issues in R, the distanceto package opts to compute these distances
+    using efficient, vector based approaches. As a helper, there's a decidedly low-res
+    raster based approach for visually inspecting your region's distance surface.
+    But the workhorse is distance_to.
+  repository: https://CRAN.R-project.org/package=distanceto
+  repository-code: https://github.com/robitalec/distance-to
+  url: https://robitalec.github.io/distance-to/
+  contact:
+  - family-names: Robitaille
+    given-names: Alec L.
+    email: robit.alec@gmail.com
+    orcid: https://orcid.org/0000-0002-4706-1762
+  license: GPL-3.0-or-later
+  year: '2021'
+repository: https://CRAN.R-project.org/package=distanceto
+repository-code: https://github.com/robitalec/distance-to
+url: https://robitalec.github.io/distance-to/
+contact:
+- family-names: Robitaille
+  given-names: Alec L.
+  email: robit.alec@gmail.com
+  orcid: https://orcid.org/0000-0002-4706-1762
