@@ -29,6 +29,7 @@ Suggests:
     rmarkdown,
     spData,
     raster,
+    terra,
     tinytest
 Imports: 
     sf,
