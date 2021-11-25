@@ -1,3 +1,8 @@
+# distanceto 0.0.3
+
+* add CITATION.cff with `cffr`
+* fix R CMD check with GitHub Actions for Mac [#6]
+
 # distanceto 0.0.2 (2021-07-01)
 
 * add basic set of tests for `distance_to` and `distance_raster` with [`tinytest`](https://github.com/markvanderloo/tinytest/)
