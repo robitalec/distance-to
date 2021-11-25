@@ -64,7 +64,7 @@ jobs:
           done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04"))')
       - name: Install system dependencies - mac
         if: runner.os == 'macOS'
-        run: brew install gdal-config
+        run: brew install gdal
       - name: Install dependencies
         run: |
           remotes::install_deps(dependencies = TRUE)
