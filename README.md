@@ -1,9 +1,11 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/robitalec/distance-to/workflows/R-CMD-check/badge.svg)](https://github.com/robitalec/distance-to/actions)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R-CMD-check](https://github.com/robitalec/distance-to/workflows/R-CMD-check/badge.svg)](https://github.com/robitalec/distance-to/actions)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/distanceto)](https://cran.r-project.org/package=distanceto)
 <!-- badges: end -->
 
 # distance-to
@@ -35,7 +37,7 @@ library(distanceto)
 library(sf)
 ```
 
-    ## Linking to GEOS 3.9.1, GDAL 3.2.3, PROJ 8.0.1
+    ## Linking to GEOS 3.9.1, GDAL 3.3.1, PROJ 8.0.1
 
 ``` r
 # Load nc data
@@ -63,17 +65,17 @@ ncpts <- st_sample(nc, npts)
 # Select first 5 of nc
 ncsub <- nc[1:5,]
 
-# Measure distance from ncpts to first 5 of nc, printing result
+# Measure distance from ncpts to first 5 of nc
 dists <- distance_to(ncpts, ncsub, measure = 'geodesic')
 
 head(dists, 30)
 ```
 
-    ##  [1]  79851.44  87188.74 192377.82 171686.56  33223.37 153264.43  84889.23
-    ##  [8] 164695.39 216864.40  18577.61  80896.37 128905.58 143141.38  22487.21
-    ## [15]      0.00 214936.25 187577.76  58380.75  70774.74 225874.91 102702.77
-    ## [22]  10444.36 111423.41      0.00  16081.69  39784.13 231695.98 140684.71
-    ## [29]  93868.72  17832.23
+    ##  [1]      0.000 178035.835 131322.178  73400.661      0.000  20034.159
+    ##  [7] 121285.602 146600.944  59751.849 108922.084  77796.030  25107.692
+    ## [13]  74461.054      0.000  52540.105  83764.474      0.000 124205.509
+    ## [19]  95812.577  52703.559      0.000   7470.529  48566.962  37029.617
+    ## [25] 163566.636 259729.919  39321.158 102596.096 112533.316 198722.848
 
 ``` r
 # Add to ncpts
