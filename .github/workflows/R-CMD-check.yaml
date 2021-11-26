@@ -65,7 +65,6 @@ jobs:
       - name: Install system dependencies - mac
         if: runner.os == 'macOS'
         run: |
-          brew install pkg-config
           brew install gdal
 
       - name: Install dependencies
