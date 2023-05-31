@@ -1,7 +1,11 @@
-# distanceto 0.0.3
+# distanceto 0.0.3 (2023-05-31)
 
+* update R CMD check GitHub Actions to V2 [#10](https://github.com/robitalec/distance-to/pull/10)
+* fix extent check in distance_raster [#9](https://github.com/robitalec/distance-to/pull/9)
+* add `lwgeom` to Suggests [#8](https://github.com/robitalec/distance-to/pull/8)
+* remove example data and dependency on `spData` [#7](https://github.com/robitalec/distance-to/pull/7)
 * add CITATION.cff with `cffr`
-* fix R CMD check with GitHub Actions for Mac [#6]
+* fix R CMD check with GitHub Actions for Mac [#6](https://github.com/robitalec/distance-to/pull/6)
 
 # distanceto 0.0.2 (2021-07-01)
 
