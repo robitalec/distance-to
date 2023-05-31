@@ -1,5 +1,5 @@
 # -----------------------------------------------------------
-# CITATION file created with {cffr} R package, v0.1.1
+# CITATION file created with {cffr} R package, v0.5.0
 # See also: https://docs.ropensci.org/cffr/
 # -----------------------------------------------------------
  
@@ -8,7 +8,7 @@ message: 'To cite package "distanceto" in publications use:'
 type: software
 license: GPL-3.0-or-later
 title: 'distanceto: Calculate Distance to Features'
-version: 0.0.2.9000
+version: 0.0.3
 abstract: Calculates distances from point locations to features. The usual approach
   for eg. resource selection function analyses is to generate a complete distance
   to features surface then sample it with your observed and random points. Since these
@@ -22,33 +22,6 @@ authors:
   given-names: Alec L.
   email: robit.alec@gmail.com
   orcid: https://orcid.org/0000-0002-4706-1762
-preferred-citation:
-  type: manual
-  title: 'distanceto: Calculate Distance to Features'
-  authors:
-  - family-names: Robitaille
-    given-names: Alec L.
-    email: robit.alec@gmail.com
-    orcid: https://orcid.org/0000-0002-4706-1762
-  version: 0.0.2.9000
-  abstract: Calculates distances from point locations to features. The usual approach
-    for eg. resource selection function analyses is to generate a complete distance
-    to features surface then sample it with your observed and random points. Since
-    these raster based approaches can be pretty costly with large areas, and often
-    lead to memory issues in R, the distanceto package opts to compute these distances
-    using efficient, vector based approaches. As a helper, there's a decidedly low-res
-    raster based approach for visually inspecting your region's distance surface.
-    But the workhorse is distance_to.
-  repository: https://CRAN.R-project.org/package=distanceto
-  repository-code: https://github.com/robitalec/distance-to
-  url: https://robitalec.github.io/distance-to/
-  contact:
-  - family-names: Robitaille
-    given-names: Alec L.
-    email: robit.alec@gmail.com
-    orcid: https://orcid.org/0000-0002-4706-1762
-  license: GPL-3.0-or-later
-  year: '2021'
 repository: https://CRAN.R-project.org/package=distanceto
 repository-code: https://github.com/robitalec/distance-to
 url: https://robitalec.github.io/distance-to/
@@ -57,3 +30,148 @@ contact:
   given-names: Alec L.
   email: robit.alec@gmail.com
   orcid: https://orcid.org/0000-0002-4706-1762
+references:
+- type: software
+  title: fasterize
+  abstract: 'fasterize: Fast Polygon to Raster Conversion'
+  notes: Suggests
+  url: https://github.com/ecohealthalliance/fasterize
+  repository: https://CRAN.R-project.org/package=fasterize
+  authors:
+  - family-names: Ross
+    given-names: Noam
+    email: ross@ecohealthalliance.org
+    orcid: https://orcid.org/0000-0002-2136-0000
+  year: '2023'
+- type: software
+  title: knitr
+  abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
+  notes: Suggests
+  url: https://yihui.org/knitr/
+  repository: https://CRAN.R-project.org/package=knitr
+  authors:
+  - family-names: Xie
+    given-names: Yihui
+    email: xie@yihui.name
+    orcid: https://orcid.org/0000-0003-0645-5666
+  year: '2023'
+- type: software
+  title: rmarkdown
+  abstract: 'rmarkdown: Dynamic Documents for R'
+  notes: Suggests
+  url: https://pkgs.rstudio.com/rmarkdown/
+  repository: https://CRAN.R-project.org/package=rmarkdown
+  authors:
+  - family-names: Allaire
+    given-names: JJ
+    email: jj@posit.co
+  - family-names: Xie
+    given-names: Yihui
+    email: xie@yihui.name
+    orcid: https://orcid.org/0000-0003-0645-5666
+  - family-names: Dervieux
+    given-names: Christophe
+    email: cderv@posit.co
+    orcid: https://orcid.org/0000-0003-4474-2498
+  - family-names: McPherson
+    given-names: Jonathan
+    email: jonathan@posit.co
+  - family-names: Luraschi
+    given-names: Javier
+  - family-names: Ushey
+    given-names: Kevin
+    email: kevin@posit.co
+  - family-names: Atkins
+    given-names: Aron
+    email: aron@posit.co
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@posit.co
+  - family-names: Cheng
+    given-names: Joe
+    email: joe@posit.co
+  - family-names: Chang
+    given-names: Winston
+    email: winston@posit.co
+  - family-names: Iannone
+    given-names: Richard
+    email: rich@posit.co
+    orcid: https://orcid.org/0000-0003-3925-190X
+  year: '2023'
+- type: software
+  title: raster
+  abstract: 'raster: Geographic Data Analysis and Modeling'
+  notes: Suggests
+  url: https://rspatial.org/raster
+  repository: https://CRAN.R-project.org/package=raster
+  authors:
+  - family-names: Hijmans
+    given-names: Robert J.
+    email: r.hijmans@gmail.com
+    orcid: https://orcid.org/0000-0001-5872-2872
+  year: '2023'
+- type: software
+  title: tinytest
+  abstract: 'tinytest: Lightweight and Feature Complete Unit Testing Framework'
+  notes: Suggests
+  url: https://github.com/markvanderloo/tinytest
+  repository: https://CRAN.R-project.org/package=tinytest
+  authors:
+  - family-names: van der Loo
+    given-names: Mark
+    email: mark.vanderloo@gmail.com
+    orcid: https://orcid.org/0000-0002-9807-4686
+  year: '2023'
+- type: software
+  title: lwgeom
+  abstract: 'lwgeom: Bindings to Selected ''liblwgeom'' Functions for Simple Features'
+  notes: Suggests
+  url: https://github.com/r-spatial/lwgeom/
+  repository: https://CRAN.R-project.org/package=lwgeom
+  authors:
+  - family-names: Pebesma
+    given-names: Edzer
+    email: edzer.pebesma@uni-muenster.de
+    orcid: https://orcid.org/0000-0001-8049-7069
+  year: '2023'
+- type: software
+  title: sf
+  abstract: 'sf: Simple Features for R'
+  notes: Imports
+  url: https://r-spatial.github.io/sf/
+  repository: https://CRAN.R-project.org/package=sf
+  authors:
+  - family-names: Pebesma
+    given-names: Edzer
+    email: edzer.pebesma@uni-muenster.de
+    orcid: https://orcid.org/0000-0001-8049-7069
+  year: '2023'
+- type: software
+  title: nabor
+  abstract: 'nabor: Wraps ''libnabo'', a Fast K Nearest Neighbour Library for Low
+    Dimensions'
+  notes: Imports
+  url: https://github.com/ethz-asl/libnabo
+  repository: https://CRAN.R-project.org/package=nabor
+  authors:
+  - family-names: Mangenat
+    given-names: Stephane
+  - family-names: Jefferis
+    given-names: Gregory
+  year: '2023'
+  identifiers:
+  - type: url
+    value: https://github.com/ethz-asl/libnabo
+- type: software
+  title: geodist
+  abstract: 'geodist: Fast, Dependency-Free Geodesic Distance Calculations'
+  notes: Imports
+  url: https://github.com/hypertidy/geodist
+  repository: https://CRAN.R-project.org/package=geodist
+  authors:
+  - family-names: Padgham
+    given-names: Mark
+    email: mark.padgham@email.com
+  - family-names: Sumner
+    given-names: Michael D.
+  year: '2023'
