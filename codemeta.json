@@ -4,7 +4,7 @@
   "identifier": "distanceto",
   "description": "Calculates distances from point locations to features. The usual approach for eg. resource selection function analyses is to generate a complete distance to features surface then sample it with your observed and random points. Since these raster based approaches can be pretty costly with large areas, and often lead to memory issues in R, the distanceto package opts to compute these distances using efficient, vector based approaches. As a helper, there's a decidedly low-res raster based approach for visually inspecting your region's distance surface. But the workhorse is distance_to.",
   "name": "distanceto: Calculate Distance to Features",
-  "relatedLink": "https://robitalec.github.io/distance-to/",
+  "relatedLink": ["https://robitalec.github.io/distance-to/", "https://CRAN.R-project.org/package=distanceto"],
   "codeRepository": "https://github.com/robitalec/distance-to",
   "issueTracker": "https://github.com/robitalec/distance-to/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
@@ -14,7 +14,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.1.1 (2021-08-10)",
+  "runtimePlatform": "R version 4.3.0 (2023-04-21)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -75,18 +75,6 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "spData",
-      "name": "spData",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=spData"
     },
     {
       "@type": "SoftwareApplication",
@@ -152,5 +140,9 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "78.209KB"
+  "fileSize": "90.662KB",
+  "releaseNotes": "https://github.com/robitalec/distance-to/blob/master/NEWS.md",
+  "readme": "https://github.com/robitalec/distance-to/blob/main/README.md",
+  "contIntegration": "https://github.com/robitalec/distance-to/actions",
+  "developmentStatus": "https://lifecycle.r-lib.org/articles/stages.html#experimental"
 }
