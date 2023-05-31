@@ -6,7 +6,6 @@
 library(tinytest)
 library(distanceto)
 
-library(spData)
 library(sf)
 
 
@@ -27,15 +26,14 @@ nc <- st_read(system.file("shape/nc.shp", package="sf"))
 somenc <- nc[sample(length(nc), 5),]
 ncpts <- sample_bbox(nc, npts)
 
-data('seine', package = 'spData')
-bufseine <- st_buffer(seine, npts)
-seinepts <- sample_bbox(bufseine[1, ], npts)
+nc_utm <- st_transform(nc, 26918)
+nc_utm_pts <- sample_bbox(nc_utm[1, ], npts)
 
 
 # Run ---------------------------------------------------------------------
 d <- distance_to(ncpts, somenc, measure = 'geodesic')
 
-dproj <- distance_to(seinepts, seine)
+dproj <- distance_to(nc_utm_pts, nc_utm)
 dgeo <- d
 
 
@@ -56,7 +54,7 @@ expect_equal(all(dgeo >= 0), all(dproj >= 0))
 
 
 # Warnings
-expect_warning(distance_to(seinepts, seine, measure = 'geodesic'),
+expect_warning(distance_to(nc_utm_pts, nc_utm, measure = 'geodesic'),
 							 '"measure" ignored since x and y are not longlat')
 
 # Errors

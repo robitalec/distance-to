@@ -7,7 +7,6 @@
 library(tinytest)
 library(distanceto)
 
-library(spData)
 library(sf)
 library(raster)
 
@@ -15,12 +14,12 @@ library(raster)
 # Data --------------------------------------------------------------------
 nc <- st_read(system.file("shape/nc.shp", package="sf"))
 
-data('seine', package = 'spData')
-st_crs(seine) <- 2154
+nc_utm <- st_transform(nc, 26918)
+
 
 # Run ---------------------------------------------------------------------
 rgeo <- distance_raster(nc, cellsize = 0.5, measure = 'geodesic')
-rproj <- distance_raster(seine, 1e5)
+rproj <- distance_raster(nc_utm, 1e5)
 
 
 # Tests -------------------------------------------------------------------
