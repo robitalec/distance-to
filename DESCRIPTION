@@ -29,10 +29,10 @@ Suggests:
     rmarkdown,
     spData,
     raster,
-    tinytest
+    tinytest,
+    lwgeom
 Imports: 
     sf,
     nabor,
-    geodist,
-    lwgeom
+    geodist
 VignetteBuilder: knitr
