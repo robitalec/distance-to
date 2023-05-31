@@ -27,7 +27,6 @@ Suggests:
     fasterize,
     knitr,
     rmarkdown,
-    spData,
     raster,
     tinytest
 Imports: 
