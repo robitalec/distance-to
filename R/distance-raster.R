@@ -54,7 +54,6 @@
 #'
 #' # Load nc data
 #' nc <- st_read(system.file("shape/nc.shp", package="sf"))
-#' st_crs(nc) <- "+proj=longlat +datum=NAD27"
 #'
 #' # Select first 5 of nc
 #' ncsub <- nc[1:5,]
