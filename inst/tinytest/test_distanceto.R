@@ -68,8 +68,7 @@ expect_error(distance_to(st_linestring(matrix(42, 0, 2)),
 												 st_point(c(42, 42))),
 						 'x must be a POINT or MULTIPOINT')
 
-difcrs <- ncpts
-st_crs(difcrs) <- 32621
+difcrs <- st_transform(ncpts, 32621)
 expect_error(distance_to(ncpts, difcrs),
 						 'crs of x and y must match')
 
