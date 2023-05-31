@@ -110,10 +110,10 @@ hist(dist)
 
 # `distance_raster`
 
-```{r}
+```{r, fig.width=8}
 library(raster)
 
-rdist <- distance_raster(nc_utm, 1e4)
+rdist <- distance_raster(nc_utm_select, 1e4, extent = st_bbox(nc_utm))
 
 plot(rdist)
 ```
