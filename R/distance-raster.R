@@ -67,7 +67,7 @@ distance_raster <- function(y, cellsize, extent = NULL, expand = NULL,
 				 call. = FALSE)
 	}
 
-	if (!is.null(extent) & inherits(st_bbox(extent), 'bbox')) {
+	if (!is.null(extent) & !inherits(extent, 'bbox')) {
 		stop('extent must be of class bbox from sf::st_bbox')
 	}
 
