@@ -23,8 +23,8 @@ sample_bbox <- function(shape, n) {
 	crs = sf::st_crs(shape))
 }
 
-nc <- st_read(system.file("shapes/sids.shp", package="spData"))
 st_crs(nc) <- "+proj=longlat +datum=NAD27"
+nc <- st_read(system.file("shape/nc.shp", package="sf"))
 somenc <- nc[sample(length(nc), 5),]
 ncpts <- sample_bbox(nc, npts)
 

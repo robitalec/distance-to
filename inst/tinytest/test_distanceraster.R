@@ -13,8 +13,8 @@ library(raster)
 
 
 # Data --------------------------------------------------------------------
-nc <- st_read(system.file("shapes/sids.shp", package="spData"))
 st_crs(nc) <- "+proj=longlat +datum=NAD27"
+nc <- st_read(system.file("shape/nc.shp", package="sf"))
 
 data('seine', package = 'spData')
 st_crs(seine) <- 2154
