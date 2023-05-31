@@ -4,8 +4,8 @@ output: github_document
 
 <!-- badges: start -->
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![R-CMD-check](https://github.com/robitalec/distance-to/workflows/R-CMD-check/badge.svg)](https://github.com/robitalec/distance-to/actions)
 [![CRAN status](https://www.r-pkg.org/badges/version/distanceto)](https://cran.r-project.org/package=distanceto)
+[![R-CMD-check](https://github.com/robitalec/distance-to/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/robitalec/distance-to/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
   
 # distance-to
