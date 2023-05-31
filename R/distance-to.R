@@ -38,8 +38,12 @@
 #' # Set number of sampling points
 #' npts <- 1e3
 #'
-#' # Sample points in nc
-#' ncpts <- st_sample(nc, npts)
+#' # Note: package 'lwgeom' required for st_sample
+#' if (require(lwgeom, quietly = TRUE)) {
+#'   # Sample points in nc
+#'   ncpts <- st_sample(nc, npts)
+#' }
+#'
 #'
 #' # Select first 5 of nc
 #' ncsub <- nc[1:5,]
