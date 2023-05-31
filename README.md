@@ -37,25 +37,23 @@ library(distanceto)
 library(sf)
 ```
 
-    ## Linking to GEOS 3.11.1, GDAL 3.6.3, PROJ 9.1.0; sf_use_s2() is TRUE
+    ## Linking to GEOS 3.11.2, GDAL 3.7.0, PROJ 9.2.0; sf_use_s2() is TRUE
 
 ``` r
 # Load nc data
-nc <- st_read(system.file("shapes/sids.shp", package="spData"))
+nc <- st_read(system.file("shape/nc.shp", package="sf"))
 ```
 
-    ## Reading layer `sids' from data source 
-    ##   `/home/alecr/R/x86_64-pc-linux-gnu-library/4.2/spData/shapes/sids.shp' 
+    ## Reading layer `nc' from data source 
+    ##   `/home/alecr/R/x86_64-pc-linux-gnu-library/4.3/sf/shape/nc.shp' 
     ##   using driver `ESRI Shapefile'
-    ## Simple feature collection with 100 features and 22 fields
+    ## Simple feature collection with 100 features and 14 fields
     ## Geometry type: MULTIPOLYGON
     ## Dimension:     XY
     ## Bounding box:  xmin: -84.32385 ymin: 33.88199 xmax: -75.45698 ymax: 36.58965
-    ## CRS:           NA
+    ## Geodetic CRS:  NAD27
 
 ``` r
-st_crs(nc) <- "+proj=longlat +datum=NAD27"
-
 # Set number of sampling points
 npts <- 1e3
 
@@ -71,11 +69,11 @@ dists <- distance_to(ncpts, ncsub, measure = 'geodesic')
 head(dists, 30)
 ```
 
-    ##  [1] 108573.1190    853.4608 118417.6123  51536.3302 143143.2330 218285.7259
-    ##  [7]  56784.4216 142665.4391  46833.9310 138812.2872  66651.4988 190312.2238
-    ## [13]  21514.2519 155223.6789  36282.4187 230433.7776 142393.7304 137011.1487
-    ## [19]  80001.9140 117340.7001  17811.4081 157349.3424 158989.0196 124539.8040
-    ## [25] 161844.0718 158726.5087  69442.7506  68322.1046  20978.3661 228094.7548
+    ##  [1] 237543.35 217923.10  91920.82 225703.62  63642.69 141852.37 178301.66
+    ##  [8]  88882.68  20298.52      0.00 100173.24 149001.91  68735.30  11992.49
+    ## [15] 151591.39 162214.72  67969.38 227235.50  49860.75  42067.82  50899.94
+    ## [22]  69211.60 111186.57  35096.09  95508.78 105467.67  31168.95 209061.13
+    ## [29]  48339.16  25743.09
 
 ``` r
 # Add to ncpts

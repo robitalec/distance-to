@@ -6,7 +6,6 @@
 library(tinytest)
 library(distanceto)
 
-library(spData)
 library(sf)
 
 
@@ -23,20 +22,18 @@ sample_bbox <- function(shape, n) {
 	crs = sf::st_crs(shape))
 }
 
-nc <- st_read(system.file("shapes/sids.shp", package="spData"))
-st_crs(nc) <- "+proj=longlat +datum=NAD27"
+nc <- st_read(system.file("shape/nc.shp", package="sf"))
 somenc <- nc[sample(length(nc), 5),]
 ncpts <- sample_bbox(nc, npts)
 
-data('seine', package = 'spData')
-bufseine <- st_buffer(seine, npts)
-seinepts <- sample_bbox(bufseine[1, ], npts)
+nc_utm <- st_transform(nc, 26918)
+nc_utm_pts <- sample_bbox(nc_utm[1, ], npts)
 
 
 # Run ---------------------------------------------------------------------
 d <- distance_to(ncpts, somenc, measure = 'geodesic')
 
-dproj <- distance_to(seinepts, seine)
+dproj <- distance_to(nc_utm_pts, nc_utm)
 dgeo <- d
 
 
@@ -57,7 +54,7 @@ expect_equal(all(dgeo >= 0), all(dproj >= 0))
 
 
 # Warnings
-expect_warning(distance_to(seinepts, seine, measure = 'geodesic'),
+expect_warning(distance_to(nc_utm_pts, nc_utm, measure = 'geodesic'),
 							 '"measure" ignored since x and y are not longlat')
 
 # Errors
@@ -71,8 +68,7 @@ expect_error(distance_to(st_linestring(matrix(42, 0, 2)),
 												 st_point(c(42, 42))),
 						 'x must be a POINT or MULTIPOINT')
 
-difcrs <- ncpts
-st_crs(difcrs) <- 32621
+difcrs <- st_transform(ncpts, 32621)
 expect_error(distance_to(ncpts, difcrs),
 						 'crs of x and y must match')
 

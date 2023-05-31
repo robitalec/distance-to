@@ -59,8 +59,7 @@ library(sf)
 ## Long-lat / unprojected coordinates
 ```{r}
 # Load nc data
-nc <- st_read(system.file("shapes/sids.shp", package="spData"))
-st_crs(nc) <- "+proj=longlat +datum=NAD27"
+nc <- st_read(system.file("shape/nc.shp", package="sf"))
 
 # Set number of sampling points
 npts <- 1e3
@@ -85,23 +84,23 @@ hist(dist)
 ## Projected coordinates
 
 ```{r}
-# Load seine data
-data('seine', package = 'spData')
-
-# Buffer seine by 1000 metres
-bufseine <- st_buffer(seine, 1000)
+# Transform nc data to local projected coordinates (UTM 18N)
+nc_utm <- st_transform(nc, 32618)
 
 # Set number of sampling points
 npts <- 1e2
 
-# Sample points within buffer seine
-seinepts <- st_sample(bufseine, npts)
+# Sample points within nc data
+nc_utm_pts <- st_sample(nc_utm, npts)
+
+# Select one polygon within nc data
+nc_utm_select <- nc_utm[1, ]
 
 # Measure distance from seine points to seine
-dist <- distance_to(seinepts, seine)
+dist <- distance_to(nc_utm_pts, nc_utm_select)
 
 # or add to seine points
-seinepts$dist <- dist
+nc_utm_pts$dist <- dist
 
 head(dist, 30)
 hist(dist)
@@ -114,7 +113,7 @@ hist(dist)
 ```{r}
 library(raster)
 
-rdist <- distance_raster(seine, 1e4)
+rdist <- distance_raster(nc_utm, 1e4)
 
 plot(rdist)
 ```

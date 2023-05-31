@@ -32,8 +32,7 @@
 #' library(sf)
 #'
 #' # Load nc data
-#' nc <- st_read(system.file("shapes/sids.shp", package="spData"))
-#' st_crs(nc) <- "+proj=longlat +datum=NAD27"
+#' nc <- st_read(system.file("shape/nc.shp", package="sf"))
 #'
 #' # Set number of sampling points
 #' npts <- 1e3
