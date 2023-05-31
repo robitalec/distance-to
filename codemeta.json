@@ -99,6 +99,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=tinytest"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "lwgeom",
+      "name": "lwgeom",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=lwgeom"
     }
   ],
   "softwareRequirements": {
@@ -140,9 +152,9 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "90.662KB",
+  "fileSize": "100.022KB",
   "releaseNotes": "https://github.com/robitalec/distance-to/blob/master/NEWS.md",
   "readme": "https://github.com/robitalec/distance-to/blob/main/README.md",
-  "contIntegration": "https://github.com/robitalec/distance-to/actions",
+  "contIntegration": "https://github.com/robitalec/distance-to/actions/workflows/R-CMD-check.yaml",
   "developmentStatus": "https://lifecycle.r-lib.org/articles/stages.html#experimental"
 }
