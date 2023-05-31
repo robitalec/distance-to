@@ -33,5 +33,6 @@ Suggests:
 Imports: 
     sf,
     nabor,
-    geodist
+    geodist,
+    lwgeom
 VignetteBuilder: knitr
