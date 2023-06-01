@@ -8,7 +8,6 @@ library(tinytest)
 library(distanceto)
 
 library(sf)
-library(raster)
 
 
 # Data --------------------------------------------------------------------
@@ -32,9 +31,11 @@ expect_equal(class(rgeo), class(rproj))
 
 
 # Output limits
-expect_equal(cellStats(rgeo >= 0, 'sum'), ncell(rgeo))
-
-expect_equal(cellStats(rproj >= 0, 'sum'), ncell(rproj))
+# Note: package 'raster' required for cellStats, ncell
+if (require(raster, quietly = TRUE)) {
+	expect_equal(cellStats(rgeo >= 0, 'sum'), ncell(rgeo))
+	expect_equal(cellStats(rproj >= 0, 'sum'), ncell(rproj))
+}
 
 
 # Warnings
