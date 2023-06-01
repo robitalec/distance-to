@@ -1,5 +1,6 @@
 # distanceto 0.0.3 (2023-05-31)
 
+* fix errors with environment variable "_R_CHECK_DEPENDS_ONLY_" [#11](https://github.com/robitalec/distance-to/pull/11)
 * update R CMD check GitHub Actions to V2 [#10](https://github.com/robitalec/distance-to/pull/10)
 * fix extent check in distance_raster [#9](https://github.com/robitalec/distance-to/pull/9)
 * add `lwgeom` to Suggests [#8](https://github.com/robitalec/distance-to/pull/8)
