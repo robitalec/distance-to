@@ -50,15 +50,14 @@ npts <- 1e3
 if (require(lwgeom, quietly = TRUE)) {
   # Sample points in nc
   ncpts <- st_sample(nc, npts)
+
+	# Select first 5 of nc
+	ncsub <- nc[1:5,]
+
+	# Measure distance from ncpts to first 5 of nc, printing result
+	distance_to(ncpts, ncsub, measure = 'geodesic')
+
+	# or add to ncpts
+	ncpts$dist <- distance_to(ncpts, ncsub, measure = 'geodesic')
 }
-
-
-# Select first 5 of nc
-ncsub <- nc[1:5,]
-
-# Measure distance from ncpts to first 5 of nc, printing result
-distance_to(ncpts, ncsub, measure = 'geodesic')
-
-# or add to ncpts
-ncpts$dist <- distance_to(ncpts, ncsub, measure = 'geodesic')
 }
