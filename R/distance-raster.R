@@ -58,8 +58,12 @@
 #' # Select first 5 of nc
 #' ncsub <- nc[1:5,]
 #'
-#' # Generate a distance raster from some of nc within extent of all of nc
-#' distance_raster(ncsub, 0.1, st_bbox(nc), measure = 'geodesic')
+#'
+#' # Note: package 'fasterize' required for distance_raster
+#' if (require(fasterize, quietly = TRUE)) {
+#'   # Generate a distance raster from some of nc within extent of all of nc
+#'   distance_raster(ncsub, 0.1, st_bbox(nc), measure = 'geodesic')
+#' }
 distance_raster <- function(y, cellsize, extent = NULL, expand = NULL,
 														measure = NULL, check = TRUE) {
 	if (!requireNamespace('fasterize', quietly = TRUE)) {
